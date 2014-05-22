@@ -2,3 +2,19 @@ extends ../shared/template
 
 block content
   h1 WEB
+
+  #registration
+    form(action='/users/register', method='POST')
+      input.email(type='email', name='email', placeholder='email')
+      input.password(type='password', name='password', placeholder='password')
+      input.first-name(type='text', name='firstName', placeholder='First Name')
+      input.last-name(type='text', name='lastName', placeholder='Last Name')
+      input.age(type='text', name='age', placeholder='age')
+      select.gender(name='gender')
+        option Select Gender
+        option Male
+        option Female
+      input.interests(type='text', name='interests', placeholder='Your Interests')
+      input.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications')
+      input.bio(type='text', name='bio', placeholder='Tell us a little about yourself')
+      button.register Submit
