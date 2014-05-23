@@ -30,3 +30,40 @@ block content
       input.email(type='email', name='email', placeholder='email')
       input.password(type='password', name='password', placeholder='password')
       button.login Login
+
+  .quill-wrapper
+    #toolbar.sc-toolbar-container
+      span.sc-format-group
+        select.sc-font.sc-picker
+          option.sc-font(value='san-serif') Sans Serif
+      span.sc-format-group
+        select.sc-format-group.sc-size
+          option(value='small') Small
+          option(value='normal') Normal
+          option(value='large') Large
+          option(value='huge') Huge
+      span.sc-format-group
+        button.sc-format-button.sc-bold
+      span.sc-format-group
+        button.sc-format-button.sc-italic
+      span.sc-format-group
+        button.sc-format-button.sc-strike
+      span.sc-format-group
+        button.sc-format-button.sc-underline
+      span.sc-format-group
+        button.sc-format-button.sc-link
+
+    #editor.sc-container
+      p Hello World!
+      p Some initial text
+      b bold text
+
+//- block links
+//-   link(rel='stylesheet', href="http://quilljs.com/css/quill.snow.css")
+
+block links
+  link(href="http://quilljs.com/css/quill.snow.css", rel='stylesheet')
+
+block scripts
+  script(src='http://quilljs.com/js/quill.js')
+  script(src='/js/es6/compiled/quill.js')
