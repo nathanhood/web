@@ -5,9 +5,9 @@
 
 
 exports.index = (req, res)=>{
-    res.render('courses/index', {title:'WEB: Courses'});
+    res.render('courses/index', {title:'WEB: Course Index'});
 };
 
-exports.form = (req, res)=>{
-    res.render('courses/form', {title:'WEB: Create Course'});
+exports.edit = (req, res)=>{
+    res.render('courses/edit', {title:'WEB: Create Course'});
 };
