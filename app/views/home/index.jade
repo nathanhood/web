@@ -5,16 +5,27 @@ block content
 
   #registration
     form(action='/users/register', method='POST')
-      input.email(type='email', name='email', placeholder='email')
-      input.password(type='password', name='password', placeholder='password')
-      input.first-name(type='text', name='firstName', placeholder='First Name')
-      input.last-name(type='text', name='lastName', placeholder='Last Name')
-      input.age(type='text', name='age', placeholder='age')
+      abbr *
+        input.email(type='email', name='email', placeholder='Email', required='required')
+      abbr *
+        input.password(type='password', name='password', placeholder='Password', required='required')
+      abbr *
+        input.first-name(type='text', name='firstName', placeholder='First Name', required='required')
+      abbr *
+        input.last-name(type='text', name='lastName', placeholder='Last Name', required='required')
+      abbr *
+        input.age(type='text', name='age', placeholder='Age', required='required')
       select.gender(name='gender')
         option Select Gender
         option Male
         option Female
-      input.interests(type='text', name='interests', placeholder='Your Interests')
-      input.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications')
+      input.interests(type='text', name='interests', placeholder='Interests')
+      input.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications/Education', required='required')
       input.bio(type='text', name='bio', placeholder='Tell us a little about yourself')
       button.register Submit
+
+  #login
+    form(action='/users/login', method='POST')
+      input.email(type='email', name='email', placeholder='email')
+      input.password(type='password', name='password', placeholder='password')
+      button.login Login
