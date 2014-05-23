@@ -29,3 +29,21 @@ block content
       input.email(type='email', name='email', placeholder='email')
       input.password(type='password', name='password', placeholder='password')
       button.login Login
+
+  #toolbar
+    select.sc-size
+      option(value='small') Small
+      option(value='normal') Normal
+      option(value='large') Large
+      option(value='huge') Huge
+    button.sc-bold Bold
+    button.sc-italic Italic
+
+  #editor
+    p Hello World!
+    p Some initial text
+    b bold text
+
+//- block scripts
+//-   script('http://quilljs.com/js/quill.js')
+//-   script('/js/compiled/quill.js')
