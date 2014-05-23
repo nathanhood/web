@@ -2,7 +2,7 @@
 
 var users = global.nss.db.collection('users');
 // var Mongo = require('mongodb');
-// var _ = require('lodash');
+var _ = require('lodash');
 var bcrypt = require('bcrypt');
 
 class User{
@@ -20,19 +20,30 @@ class User{
 
   register(fn){
     users.findOne({email:this.email}, (err, u)=>{
-      if(u){//if no user exists,
-        var isMatch = bcrypt.compareSync(this.password, u.password);
-        if(isMatch){
-          fn(u);
-        }else{
-          fn(null);
-        }
+      if(u){//if user exists,
+        fn(null);
       }else{
         this.password = bcrypt.hashSync(this.password, 8); //hashed/encrypted version of password
         users.save(this, (err, u)=>{
           fn(u);
         });
       }
+    });
+  }
+
+  login(user, fn){
+    var isMatch = bcrypt.compareSync(user.password, this.password); //(entered password, db password)
+    if(isMatch){
+      fn(this);
+    }else{
+      fn(null);
+    }
+  }
+
+  static findByUserEmail(email, fn){
+    users.findOne({email:email}, (err, user)=>{
+      user = _.create(User.prototype, user);
+      fn(user);
     });
   }
 
