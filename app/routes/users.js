@@ -31,3 +31,15 @@ exports.login = (req, res)=>{
     }
   });
 };
+
+exports.student = (req, res)=>{
+    User.findByUserId(req.session.userId, user=>{
+        res.render('users/student', {user:user, title:'WEB: Student'});
+    });
+};
+
+exports.teacher = (req, res)=>{
+    User.findByUserId(req.session.userId, user=>{
+        res.render('users/teacher', {user:user, title:'WEB: Teacher'});
+    });
+};

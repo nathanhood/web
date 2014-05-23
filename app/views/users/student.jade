@@ -1,0 +1,9 @@
+extends ../shared/template
+
+block content
+  h1 WEB: Student
+
+  .profile
+      .name #{user.firstName} #{user.lastName}
+      .email #{user.email}
+      .age #{user.age}
