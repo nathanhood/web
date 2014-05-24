@@ -8,9 +8,11 @@ var Quill,
   }));
   function quill() {
     editor = new Quill('#editor', {
-      modules: {'link-tooltip': true},
-      theme: 'snow',
-      formats: ['image']
+      modules: {
+        'link-tooltip': true,
+        'image-tooltip': true
+      },
+      theme: 'snow'
     });
     editor.addModule('toolbar', {container: '#toolbar'});
   }

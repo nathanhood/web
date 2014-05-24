@@ -5,7 +5,7 @@
 
 
 exports.index = (req, res)=>{
-    res.render('courses/index', {title:'WEB: Course Index'});
+    res.render('courses/index', {title:'WEB: Create Content'});
 };
 
 exports.edit = (req, res)=>{

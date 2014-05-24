@@ -13,9 +13,9 @@ var Quill, editor;
     editor = new Quill('#editor', {
       modules: {
         'link-tooltip': true,
+        'image-tooltip': true
       },
       theme: 'snow',
-      formats: ['image']
     });
 
     editor.addModule('toolbar', {
