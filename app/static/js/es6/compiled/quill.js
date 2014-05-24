@@ -9,7 +9,8 @@ var Quill,
   function quill() {
     editor = new Quill('#editor', {
       modules: {'link-tooltip': true},
-      theme: 'snow'
+      theme: 'snow',
+      formats: ['image']
     });
     editor.addModule('toolbar', {container: '#toolbar'});
   }

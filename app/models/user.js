@@ -16,6 +16,8 @@ class User{
     this.interests = obj.interests;
     this.qualifications = obj.qualifications;
     this.bio = obj.bio;
+    this.courses = [];
+    this.picture = '/img/';
   }
 
   register(fn){

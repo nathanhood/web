@@ -12,9 +12,10 @@ var Quill, editor;
 
     editor = new Quill('#editor', {
       modules: {
-        'link-tooltip': true
+        'link-tooltip': true,
       },
-      theme: 'snow'
+      theme: 'snow',
+      formats: ['image']
     });
 
     editor.addModule('toolbar', {

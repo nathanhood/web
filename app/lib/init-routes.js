@@ -31,6 +31,8 @@ function load(app, fn){
   app.get('/courses/create', dbg, courses.edit);//teacher side
 
   app.get('/teacher/:courseId/content', dbg, contents.new);
+  app.post('/teacher/:courseId/content/create', dbg, contents.create);
+  
 
   // app.get('/teacher/:courseId/test', dbg, test.edit);
 

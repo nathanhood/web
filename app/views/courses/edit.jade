@@ -1,7 +1,17 @@
 extends ../shared/template
 
 block content
-  h1 WEB: Course Creation
+  h1 WEB: Course Creation/Edit
 
-  h2 Add Content
-  h2 Add Test
+  .add-stage
+    h2 Add Stage
+    form(method='GET', action='/teacher/:courseId/content')
+      input.title(type='text', name='title', placeholder='title')
+      button#add-stage Add
+
+
+  .stages
+
+block scripts
+  script(src='/js/es6/compiled/course.js')
+  script(src='/js/es6/compiled/content.js')

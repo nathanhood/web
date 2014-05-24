@@ -1,4 +1,59 @@
 extends ../shared/template
 
 block content
-  h1 WEB: New Content
+  h1 #{title}
+
+  button.button#create-content Finished
+
+  .quill-wrapper
+    #toolbar.sc-toolbar-container
+      span.sc-format-group
+        select.sc-font.sc-picker
+          option.sc-font(value='san-serif') Sans Serif
+          option.sc-font(value='serif') Serif
+          option.sc-font(value='monospace') Monospace
+      span.sc-format-group
+        select.sc-format-group.sc-size
+          option(value='small') Small
+          option(value='normal') Normal
+          option(value='large') Large
+          option(value='huge') Huge
+      span.sc-format-group
+        button.sc-format-button.sc-bold
+      span.sc-format-group
+        button.sc-format-button.sc-italic
+      span.sc-format-group
+        button.sc-format-button.sc-strike
+      span.sc-format-group
+        button.sc-format-button.sc-underline
+      span.sc-format-group
+        button.sc-format-button.sc-link
+      //- span.sc-format-group
+      //-   span.sc-format-button.sc-link(title='Link')
+      //-   span.sc-format-separator
+      //-   button.sc-format-button.sc-image(title='Image')
+
+    #editor.sc-container
+      p Hello World!
+      p Some initial text
+      b bold text
+
+
+  .resources
+    h3 Resource Links
+    button.button#add-resource Add Resource
+    form
+      .resource-shell
+        .resource
+          input.text(type='text', name='text', placeholder='Text to appear on page')
+          input.url(type='text', name='url', placeholder ='url/link to resource')
+
+
+
+block links
+  link(href="http://quilljs.com/css/quill.snow.css", rel='stylesheet')
+
+block scripts
+  script(src='http://quilljs.com/js/quill.js')
+  script(src='/js/es6/compiled/quill.js')
+  script(src='/js/es6/compiled/content.js')
