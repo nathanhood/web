@@ -18,10 +18,11 @@ block content
                       input.form-control(type='password', placeholder='Password')
                   button.signin.btn.btn-success(type='submit') Sign In
                   button.register.btn.btn-warning(type='submit') Register
-  h1 WEB
+  //h1 WEB
 
   #registration
-    form(action='/users/register', method='POST')
+    form(action='/users/register', method='POST', enctype='multipart/form-data')
+      input.form-control.username(type='text', name='username', placeholder='Username', required='required')
       input.form-control.email(type='email', name='email', placeholder='Email', required='required')
       input.form-control.username(type='text', name='username', placeholder='Username', required='required')
       input.form-control.password(type='password', name='password', placeholder='Password', required='required')
@@ -36,6 +37,9 @@ block content
       textarea.form-control.interests(rows='3', type='text', name='interests', placeholder='Interests')
       textarea.form-control.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications/Education', required='required')
       textarea.form-control.bio(rows='3', type='text', name='bio', placeholder='Tell us a little about yourself')
+      p.selectimage Select a Profile Image:
+      input(type='file', name='image')
+
       button.submit.btn.btn-info Submit
 
   #login
