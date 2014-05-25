@@ -11,7 +11,9 @@ block content
                   span.icon-bar
                   span.icon-bar
               .navbar-brand WEB: Course Creation/Edit
-              .name.navbar-brand #{course.title}
+              .float
+                .name.navbar-brand #{course.title}
+                button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
   .courseinfo
@@ -22,17 +24,13 @@ block content
     h2 Add Stage
     form(method='GET', action='/teacher/#{course._id}/content')
       input.form-control.title(type='text', name='title', placeholder='title')
-      button.submit.btn.btn-info#add-stage Add
+      button.btn.btn-info#add-stage Add
 
   .stages
-    each title in course.contentTitles
-      h2= title
-      button.submit.btn.btn-info Edit Content
-      button.submit.btn.btn-info Create/Edit Test
     each content in contents
       h2= content.title
-      button.edit-content(data-contentId='#{content._id}') Edit Content
-      button.edit-test(data-contentId='#{content._id}') Create/Edit Test
+      button.btn.btn-info.edit-content(data-contentId='#{content._id}') Edit Content
+      button.btn.btn-info.edit-test(data-contentId='#{content._id}') Create/Edit Test
 
 block scripts
   script(src='/js/es6/compiled/course.js')

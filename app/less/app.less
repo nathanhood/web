@@ -4,9 +4,9 @@ input {
 
 .quill-wrapper, #editor.sc-container {
   background-color: hsl(0, 0%, 100%);
-  border-left: 1px solid hsl(0, 0%, 80%);
-  border-right: 1px solid hsl(0, 0%, 80%);
-  box-shadow: 0px 0px 10px hsl(0, 0%, 80%);
+  //border-left: 1px solid hsl(0, 0%, 80%);
+  //border-right: 1px solid hsl(0, 0%, 80%);
+  box-shadow: 1px 1px 10px gray;
   max-width: 960px;
   min-width: 320px;
   width: 66%;
@@ -28,10 +28,14 @@ body {
   background-image: url('/img/background.png');
 }
 
-.gender {
+.gender, .answer {
   height: 30px;
   margin-right: 379px;
   margin-bottom: 5px;
+}
+
+.gender {
+  margin-right: 420px;
 }
 
 .signin {
@@ -39,7 +43,11 @@ body {
   margin-left: 5px;
 }
 
-.name.navbar-brand {
+.logout {
+  margin-top: 7px;
+}
+
+.float {
   float: right;
 }
 
@@ -52,19 +60,19 @@ body {
   font-size: 15px;
 }
 
-.courseinfo {
+.courseinfo, .stage, .test {
   margin-top: 100px;
 }
 
 #registration {
   margin: auto;
   text-align: center;
-  width: 575px;
-  margin-top: 75px;
-  background-color: rgba(0,0,0,0.4);
+  //width: 575px;
+  //margin-top: 75px;
+  //background-color: rgba(255,255,255,0.7);
   display: none;
-  padding: 30px;
-  box-shadow: 2px 2px 7px black;
+  //padding: 30px;
+  //box-shadow: 2px 2px 7px black;
 }
 
 .selectimage {
@@ -87,10 +95,6 @@ body {
 
 .courseimage {
   width: 150px;
-}
-
-.stage {
-  margin-top: 100px;
 }
 
 .sc-bold, .sc-italic, .sc-strike, .sc-underline, .sc-link, .sc-image {
@@ -116,6 +120,10 @@ body {
   margin-left: 50px;
 }
 
+.videos {
+  margin-left: 350px;
+}
+
 .stages button {
   margin-left: 5px;
 }
@@ -132,4 +140,43 @@ body {
 
 .studentsearch {
   margin: auto;
+}
+
+.form-control.question, .form-control.possible-answer {
+  display: inline;
+}
+
+#create-test {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.add-possible {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.question {
+  margin-top: 10px;
+}
+
+.modal-footer, .modal-body {
+  border: none;
+}
+
+.welcome {
+  font-size: 100px;
+  margin: auto;
+  text-align: center;
+  margin-top: 250px;
+}
+
+.subwelcome {
+  margin: auto;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.monospace {
+  width: 100px;
 }

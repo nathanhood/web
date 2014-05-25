@@ -10,7 +10,9 @@ block content
                   span.icon-bar
                   span.icon-bar
               .navbar-brand WEB: New State Creation
-              .name.navbar-brand #{stage}
+              .float
+                .name.navbar-brand #{stage}
+                button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
   .stage
@@ -22,11 +24,11 @@ block content
           select.sc-font.sc-picker
             option.sc-font(value='san-serif') Sans Serif
             option.sc-font(value='serif') Serif
-            option.sc-font(value='monospace') Monospace
+            option.sc-font.monospace(value='monospace') Monospace
         span.sc-format-group
           select.sc-format-group.sc-size
             option(value='small') Small
-            option(value='normal') Normal
+            option.normal(value='normal') Normal
             option(value='large') Large
             option(value='huge') Huge
         span.sc-format-group
@@ -63,7 +65,7 @@ block content
           input.form-control.text(type='text', name='video', placeholder='URL')
     button.submit.btn.btn-info#add-video Add Video
 
-  button.btn.btn-success#create-content Finished  
+  button.btn.btn-success#create-content Finished
 
 block links
   link(href="http://quilljs.com/css/quill.snow.css", rel='stylesheet')

@@ -11,7 +11,9 @@ block content
                  span.icon-bar
                  span.icon-bar
              .navbar-brand WEB: Teacher
-             .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+             .float
+               .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+               button.logout.btn.btn-danger.login Log Out
          .navbar-collapse.collapse
   .profile
 
@@ -23,7 +25,7 @@ block content
       input(type='file', name='image')
       button.submit.btn.btn-info#new-course Create Course
 
-  #current-courses    
+  #current-courses
     h2 Current Courses
 
       //- .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
