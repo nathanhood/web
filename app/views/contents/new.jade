@@ -1,58 +1,69 @@
 extends ../shared/template
 
 block content
-  h1(data-courseId='#{courseId}') #{stage}
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+          .nav-bar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              .navbar-brand WEB: New State Creation
+              .name.navbar-brand #{stage}
+          .navbar-collapse.collapse
 
-  button#create-content Finished
+  .stage
+    h1(data-courseId='#{courseId}') #{stage}
 
-  .quill-wrapper
-    #toolbar.sc-toolbar-container
-      span.sc-format-group
-        select.sc-font.sc-picker
-          option.sc-font(value='san-serif') Sans Serif
-          option.sc-font(value='serif') Serif
-          option.sc-font(value='monospace') Monospace
-      span.sc-format-group
-        select.sc-format-group.sc-size
-          option(value='small') Small
-          option(value='normal') Normal
-          option(value='large') Large
-          option(value='huge') Huge
-      span.sc-format-group
-        button.sc-format-button.sc-bold
-      span.sc-format-group
-        button.sc-format-button.sc-italic
-      span.sc-format-group
-        button.sc-format-button.sc-strike
-      span.sc-format-group
-        button.sc-format-button.sc-underline
-      span.sc-format-group
-        button.sc-format-button.sc-link
-      span.sc-format-group
-        button.sc-format-button.sc-image
+    .quill-wrapper
+      #toolbar.sc-toolbar-container
+        span.sc-format-group
+          select.sc-font.sc-picker
+            option.sc-font(value='san-serif') Sans Serif
+            option.sc-font(value='serif') Serif
+            option.sc-font(value='monospace') Monospace
+        span.sc-format-group
+          select.sc-format-group.sc-size
+            option(value='small') Small
+            option(value='normal') Normal
+            option(value='large') Large
+            option(value='huge') Huge
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-bold
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-italic
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-strike
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-underline
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-link
+        span.sc-format-group
+          button.submit.btn.btn-info.sc-format-button.sc-image
 
     #editor.sc-container
       p Hello World!
       p Some initial text
       b bold text
 
-
   .resources
     h3 Resource Links
-    button.button#add-link Add Resource
     form#resource-links
       .link-resource-shell
         .link-resource
-          input.text(type='text', name='text', placeholder='Text to appear on page')
-          input.url(type='text', name='url', placeholder ='URL/link to resource')
+          input.form-control.text(type='text', name='text', placeholder='Text to appear on page')
+          input.form-control.url(type='text', name='url', placeholder ='URL/link to resource')
+    button.submit.btn.btn-info#add-link Add Resource
+  .videos
     h3 YouTube Videos
-    button.button#add-video Add Resource
     #resource-videos
       .video-resource-shell
         .video-resource
-          input.text(type='text', name='video', placeholder='URL')
+          input.form-control.text(type='text', name='video', placeholder='URL')
+    button.submit.btn.btn-info#add-video Add Video
 
-
+  button.btn.btn-success#create-content Finished  
 
 block links
   link(href="http://quilljs.com/css/quill.snow.css", rel='stylesheet')
