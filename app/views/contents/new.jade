@@ -3,7 +3,7 @@ extends ../shared/template
 block content
   h1(data-courseId='#{courseId}') #{stage}
 
-  button.button#create-content Finished
+  button#create-content Finished
 
   .quill-wrapper
     #toolbar.sc-toolbar-container
@@ -39,12 +39,18 @@ block content
 
   .resources
     h3 Resource Links
-    button.button#add-resource Add Resource
-    form
-      .resource-shell
-        .resource
+    button.button#add-link Add Resource
+    form#resource-links
+      .link-resource-shell
+        .link-resource
           input.text(type='text', name='text', placeholder='Text to appear on page')
-          input.url(type='text', name='url', placeholder ='url/link to resource')
+          input.url(type='text', name='url', placeholder ='URL/link to resource')
+    h3 YouTube Videos
+    button.button#add-video Add Resource
+    #resource-videos
+      .video-resource-shell
+        .video-resource
+          input.text(type='text', name='video', placeholder='URL')
 
 
 

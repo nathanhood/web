@@ -5,7 +5,7 @@ var Quill, editor;
 
   $(document).ready( () => {
     quill();
-    appendQuill();
+    // appendQuill();
   });
 
   function quill() {
@@ -24,15 +24,15 @@ var Quill, editor;
 
   }
 
-  function appendQuill() {
-
-    var html = editor.getHTML();
-    console.log(html);
-
-    var text = editor.getText();
-    console.log(text);
-
-  }
+  // function appendQuill() {
+  //
+  //   var html = editor.getHTML();
+  //   console.log(html);
+  //
+  //   var text = editor.getText();
+  //   console.log(text);
+  //
+  // }
 
 
 })();

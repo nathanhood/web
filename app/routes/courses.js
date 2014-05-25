@@ -11,7 +11,7 @@ exports.index = (req, res)=>{
 
 exports.edit = (req, res)=>{
   Course.findByCourseId(req.session.courseId, (course)=>{
-    console.log(course);
+    // debugger;
     res.render('courses/edit', {course:course, title:'WEB: Create Course'});
   });
 

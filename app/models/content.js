@@ -1,17 +1,23 @@
 'use strict';
 
-// var contents = global.nss.db.collection('contents');
+var contents = global.nss.db.collection('contents');
 // var Mongo = require('mongodb');
 // var _ = require('lodash');
 
 
 class Content{
-  constructor(title, courseId){
+  constructor(courseId, title, bodyText, resources, videos){
     this.courseId = courseId;
     this.title = title;
-    this.files = [];
-    this.links = [];
-    this.videos = []; 
+    this.bodyText = bodyText;
+    this.links = resources;
+    this.videos = videos;
+  }
+
+  save(fn){
+    contents.save(this, ( )=>{
+      fn();
+    });
   }
 }
 

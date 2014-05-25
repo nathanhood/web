@@ -18,15 +18,20 @@ function ajax(url, verb) {
   $(document).ready(initialize);
   function initialize() {
     $('#create-content').click(createContent);
-    $('#add-resource').click(addResource);
+    $('#add-link').click(addLinkResource);
+    $('#add-video').click(addVideoResource);
   }
-  function addResource() {
-    var resource = $('.resource:first').clone();
-    $(resource).children().val('').appendTo('.resource-shell');
+  function addLinkResource() {
+    var resource = $('.link-resource:first').clone();
+    $(resource).children().val('').appendTo('.link-resource-shell');
   }
-  function createContent() {
+  function addVideoResource() {
+    var resource = $('.video-resource:first').clone();
+    $(resource).children().val('').appendTo('.video-resource-shell');
+  }
+  function createContent(event) {
     var array = [];
-    $('form').serialize().split('&').forEach((function(s) {
+    $('#resource-links').serialize().split('&').forEach((function(s) {
       var string = s.split('=');
       var obj = {};
       $traceurRuntime.setProperty(obj, string[0], string[1]);
@@ -49,14 +54,24 @@ function ajax(url, verb) {
       var assignment = _.assign(finalTitles[$traceurRuntime.toProperty(j)], finalUrls[$traceurRuntime.toProperty(j)]);
       resources.push(assignment);
     }
+    var videos = $('.video-resource-shell').find('.text').map((function(index, video) {
+      return $(video).val();
+    })).toArray();
     var html = editor.getHTML();
     var title = $('h1').text();
     var courseId = $('h1').data('courseid');
     ajax(("/teacher/" + courseId + "/content/create"), 'POST', {
       title: title,
       bodyText: html,
-      resources: resources
-    }, (function() {}));
+      resources: resources,
+      videos: videos
+    }, (function(html) {
+      window.location = '/courses/edit';
+    }));
+    event.preventDefault();
+  }
+  function clip(string) {
+    return string.trim();
   }
 })();
 
