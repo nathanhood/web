@@ -1,0 +1,22 @@
+extends ../shared/template
+
+block content
+  h1(data-courseId='#{courseId}') #{content.title} Test
+
+  button#create-test Finished
+  button#add-question Add Question
+  .questions
+    form
+      .question-shell
+        .question
+          input.question(type='text', name='question', placeholder='Write Question')
+          input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+          button.add-possible Add Possible Answer
+          select.answer(name='answer')
+            option Correct Answer
+
+
+
+
+block scripts
+  script(src='/js/es6/compiled/test.js')

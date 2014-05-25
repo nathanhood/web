@@ -19,6 +19,19 @@ class Content{
       fn();
     });
   }
+
+  static findAllByCourseId(courseId, fn){
+    contents.find({courseId:courseId}).toArray((err, contents)=>{
+      fn(contents);
+    });
+  }
+
+  static findByContentId(courseId, fn){
+    contents.findOne({courseId:courseId}, (err, content)=>{
+      fn(content);
+    });
+  }
+
 }
 
 module.exports = Content; //exporting Class out

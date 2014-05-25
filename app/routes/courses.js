@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var Course = traceur.require(__dirname + '/../models/course.js');
+var Content = traceur.require(__dirname + '/../models/content.js');
 var multiparty = require('multiparty');
 var fs = require('fs');
 
@@ -11,8 +12,9 @@ exports.index = (req, res)=>{
 
 exports.edit = (req, res)=>{
   Course.findByCourseId(req.session.courseId, (course)=>{
-    // debugger;
-    res.render('courses/edit', {course:course, title:'WEB: Create Course'});
+    Content.findAllByCourseId(req.session.courseId, (contents)=>{
+      res.render('courses/edit', {course:course, contents:contents, title:'WEB: Create Course'});
+    });
   });
 
 };

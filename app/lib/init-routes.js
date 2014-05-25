@@ -18,6 +18,7 @@ function load(app, fn){
   var users = traceur.require(__dirname + '/../routes/users.js');
   var courses = traceur.require(__dirname + '/../routes/courses.js');
   var contents = traceur.require(__dirname + '/../routes/contents.js');
+  var tests = traceur.require(__dirname + '/../routes/tests.js');
 
   app.get('/', dbg, home.index);
   app.get('/help', dbg, home.help);
@@ -34,8 +35,7 @@ function load(app, fn){
   app.get('/teacher/:courseId/content', dbg, contents.new);
   app.post('/teacher/:courseId/content/create', dbg, contents.create);
 
-
-  // app.get('/teacher/:courseId/test', dbg, test.edit);
+  app.get('/teacher/:contentId/test', dbg, tests.edit);
 
   console.log('Routes Loaded');
   fn();
