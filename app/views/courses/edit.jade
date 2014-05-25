@@ -13,10 +13,10 @@ block content
 
 
   .stages
-    each title in course.contentTitles
-      h2= title
-      button Edit Content
-      button Create/Edit Test
+    each content in contents
+      h2= content.title
+      button.edit-content(data-contentId='#{content._id}') Edit Content
+      button.edit-test(data-contentId='#{content._id}') Create/Edit Test
 
 block scripts
   script(src='/js/es6/compiled/course.js')

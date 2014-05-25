@@ -11,12 +11,12 @@ block content
                   span.icon-bar
               a.navbar-brand(href='#') WEB: Where Education Begins
           .navbar-collapse.collapse
-              form.navbar-form.navbar-right(role='form')
+              form.navbar-form.navbar-right(action='/users/login', method='POST')
                   .form-group
-                      input.form-control(type='text', placeholder='Email')
+                      input.form-control(type='email', name='email' placeholder='Email')
                   .form-group
-                      input.form-control(type='password', placeholder='Password')
-                  button.signin.btn.btn-success(type='submit') Sign In
+                      input.form-control(type='password', name='password' placeholder='Password')
+                  button.signin.btn.btn-success.login Sign In
                   button.register.btn.btn-warning(type='submit') Register
   //h1 WEB
 

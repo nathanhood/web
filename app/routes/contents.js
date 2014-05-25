@@ -16,7 +16,7 @@ exports.create = (req, res)=>{
       course.contentTitles.push(content.title);
       course.contentIds.push(content._id);
       course.save(()=>{
-        res.render('contents/edit', {course:course});
+        res.render('courses/edit', {course:course});
       });
     });
   });
