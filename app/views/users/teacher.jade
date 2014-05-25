@@ -24,6 +24,7 @@ block content
     form(action='/courses/create', method='POST', enctype='multipart/form-data')
       input(type='text', name='title', placeholder='Course Title', required)
       input(type='text', name='summary', placeholder='Brief Summary', required)
+      input(type='file', name='image')
       button#new-course Create Course
 
     h2 Courses

@@ -2,6 +2,8 @@ extends ../shared/template
 
 block content
   h1 WEB: Course Creation/Edit
+  h2= course.title
+  img(src='/img/#{course.image}')
 
   .add-stage
     h2 Add Stage

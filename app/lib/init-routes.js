@@ -28,11 +28,12 @@ function load(app, fn){
   app.get('/teacher', dbg, users.teacher);
 
   app.get('/student/courses/:courseId', dbg, courses.index);//student side - course index
-  app.get('/courses/create', dbg, courses.edit);//teacher side
+  app.get('/courses/edit', dbg, courses.edit);//teacher side
+  app.post('/courses/create', dbg, courses.create);
 
   app.get('/teacher/:courseId/content', dbg, contents.new);
   app.post('/teacher/:courseId/content/create', dbg, contents.create);
-  
+
 
   // app.get('/teacher/:courseId/test', dbg, test.edit);
 
