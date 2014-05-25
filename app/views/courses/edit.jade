@@ -1,0 +1,23 @@
+extends ../shared/template
+
+block content
+  h1 WEB: Course Creation/Edit
+  h2= course.title
+  img(src='/img/#{course.image}')
+
+  .add-stage
+    h2 Add Stage
+    form(method='GET', action='/teacher/#{course._id}/content')
+      input.title(type='text', name='title', placeholder='title')
+      button#add-stage Add
+
+
+  .stages
+    each title in course.contentTitles
+      h2= title
+      button Edit Content
+      button Create/Edit Test
+
+block scripts
+  script(src='/js/es6/compiled/course.js')
+  script(src='/js/es6/compiled/content.js')

@@ -26,7 +26,8 @@
     "bcrypt":          "*",
     "cookie-session":  "*",
     "cookies":         "*",
-    "async":           "*"
+    "async":           "*",
+    "multiparty":      "*"
   },
   "devDependencies": {
     "grunt":                "*",

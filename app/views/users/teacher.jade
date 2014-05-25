@@ -2,8 +2,8 @@ extends ../shared/template
 
 block content
 
- .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-     .container
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
          .nav-bar-header
              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
                  span.sr-only Toggle navigation
@@ -14,6 +14,21 @@ block content
              .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
          .navbar-collapse.collapse
   .profile
+
+      .name #{user.firstName} #{user.lastName}
+      .email #{user.email}
+      .age #{user.age}
+
+  #create-course
+    h2 Create Course
+    form(action='/courses/create', method='POST', enctype='multipart/form-data')
+      input(type='text', name='title', placeholder='Course Title', required)
+      input(type='text', name='summary', placeholder='Brief Summary', required)
+      input(type='file', name='image')
+      button#new-course Create Course
+
+    h2 Courses
+
       .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
       .email <strong>Email: </strong> #{user.email}
       .age <strong>Age: </strong> #{user.age}
