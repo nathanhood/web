@@ -16,13 +16,11 @@ block content
         .navbar-brand WEB: Student
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+          img.smallpicture(src="/img/#{user._id}/#{user.picture}")
           button.logout.btn.btn-danger.login Log Out
       .navbar-collapse.collapse
 
   .profile
-  //-     .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-  //-     .email <strong>Email: </strong> #{user.email}
-  //-     .age <strong>Age: </strong> #{user.age}
 
   #student-courses
     h2 Current Courses

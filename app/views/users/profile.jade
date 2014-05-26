@@ -16,15 +16,19 @@ block content
         .navbar-brand WEB: Profile
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+          img.smallpicture(src="/img/#{user._id}/#{user.picture}")
           button.logout.btn.btn-danger.login Log Out
       .navbar-collapse.collapse
 
-  .profile
+  img.picture(src="/img/#{user._id}/#{user.picture}")
+  .userprofile
     .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
     .email <strong>Email: </strong> #{user.email}
-    .age <strong>Age: </strong> #{user.age}
+    .qualifications <strong>Qualifications: </strong> #{user.qualifications}
+    .bio <strong>Bio: </strong> #{user.bio}
+    .interests <strong>Interests: </strong> #{user.interests}
 
-  .courses
+  .courses <strong>Courses: </strong>
     each course in courses
-      .title #{course.title}
+      .title <u>#{course.title}</u>
       .summary #{course.summary}
