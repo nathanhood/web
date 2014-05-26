@@ -9,7 +9,7 @@ block content
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
-              a.navbar-brand(href='#') WEB: Where Education Begins
+              a.navbar-brand(href='/') WEB: Where Education Begins
           .navbar-collapse.collapse
               form.navbar-form.navbar-right(action='/users/login', method='POST')
                   .form-group
@@ -17,33 +17,36 @@ block content
                   .form-group
                       input.form-control(type='password', name='password' placeholder='Password')
                   button.signin.btn.btn-success.login Sign In
-                  button.register.btn.btn-warning(type='submit') Register
-  //h1 WEB
+                  button.register.btn.btn-warning.btn.btn-primary.btn(type='submit', data-toggle='modal', data-target='#myModal') Register
 
-  #registration
-    form(action='/users/register', method='POST')
-      input.form-control.username(type='text', name='username', placeholder='Username', required='required')
-      input.form-control.email(type='email', name='email', placeholder='Email', required='required')
-      //- input.form-control.username(type='text', name='username', placeholder='Username', required='required')
-      input.form-control.password(type='password', name='password', placeholder='Password', required='required')
-      input.form-control.first-name(type='text', name='firstName', placeholder='First Name', required='required')
-      input.form-control.last-name(type='text', name='lastName', placeholder='Last Name', required='required')
-      input.form-control.age(type='text', name='age', placeholder='Age', required='required')
+  h1.welcome Welcome to WEB: Where Education Begins
+  h3.subwelcome Sign In or Register to Begin
 
-      select.gender(name='gender')
-        option Select Gender
-        option Male
-        option Female
-      textarea.form-control.interests(rows='3', type='text', name='interests', placeholder='Interests')
-      textarea.form-control.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications/Education', required='required')
-      textarea.form-control.bio(rows='3', type='text', name='bio', placeholder='Tell us a little about yourself')
-      //- p.selectimage Select a Profile Image:
-      //- input(type='file', name='image')
+  .modal.fade#myModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+          h4.modal-title#myModalLable Registration Form
+        .modal-body
+          #registration
+            form(action='/users/register', method='POST')
+              input.form-control.username(type='text', name='username', placeholder='Username', required='required')
+              input.form-control.email(type='email', name='email', placeholder='Email', required='required')
+              input.form-control.password(type='password', name='password', placeholder='Password', required='required')
+              input.form-control.first-name(type='text', name='firstName', placeholder='First Name', required='required')
+              input.form-control.last-name(type='text', name='lastName', placeholder='Last Name', required='required')
+              input.form-control.age(type='text', name='age', placeholder='Age', required='required')
+              select.gender(name='gender')
+                option Select Gender
+                option Male
+                option Female
+              textarea.form-control.interests(rows='3', type='text', name='interests', placeholder='Interests')
+              textarea.form-control.qualifications(type='text', name='qualifications', placeholder='Teaching Qualifications/Education', required='required')
+              textarea.form-control.bio(rows='3', type='text', name='bio', placeholder='Tell us a little about yourself')
+              //- p.selectimage Select a Profile Image:
+              //- input(type='file', name='image')
 
-      button.submit.btn.btn-info Submit
 
-  #login
-    form(action='/users/login', method='POST')
-      input.email(type='email', name='email', placeholder='email')
-      input.password(type='password', name='password', placeholder='password')
-      button.login Login
+              .modal-footer
+                button.submit.btn.btn-info Submit

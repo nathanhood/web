@@ -3,18 +3,29 @@ extends ../shared/template
 block content
 
   .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-      .container
-          .nav-bar-header
-              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                  span.sr-only Toggle navigation
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              .navbar-brand WEB: Student
-              .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-          .navbar-collapse.collapse
+    .container
+      .nav-bar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        //- .navbar-form.navbar-left.studentsearch(role='search')
+        //-   input.search.form-group(type='text', class='form-control', placeholder='Search')
+        //-   button.searchbutton.btn.btn-default Search
+        .navbar-brand WEB: Student
+        .float
+          .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+          button.logout.btn.btn-danger.login Log Out
+      .navbar-collapse.collapse
 
   .profile
-      .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-      .email <strong>Email: </strong> #{user.email}
-      .age <strong>Age: </strong> #{user.age}
+  //-     .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
+  //-     .email <strong>Email: </strong> #{user.email}
+  //-     .age <strong>Age: </strong> #{user.age}
+
+  #student-courses
+    h2 Current Courses
+
+  #progress
+    h2 Progress

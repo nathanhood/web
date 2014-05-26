@@ -11,24 +11,23 @@ block content
                  span.icon-bar
                  span.icon-bar
              .navbar-brand WEB: Teacher
-             .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+             .float
+               .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
+               button.logout.btn.btn-danger.login Log Out
          .navbar-collapse.collapse
   .profile
-
-      .name #{user.firstName} #{user.lastName}
-      .email #{user.email}
-      .age #{user.age}
 
   #create-course
     h2 Create Course
     form(action='/courses/create', method='POST', enctype='multipart/form-data')
-      input(type='text', name='title', placeholder='Course Title', required)
-      input(type='text', name='summary', placeholder='Brief Summary', required)
+      input.form-control(type='text', name='title', placeholder='Course Title', required)
+      textarea.form-control(type='text', name='summary', placeholder='Brief Summary', required)
       input(type='file', name='image')
-      button#new-course Create Course
+      button.submit.btn.btn-info#new-course Create Course
 
-    h2 Courses
+  #current-courses
+    h2 Current Courses
 
-      .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-      .email <strong>Email: </strong> #{user.email}
-      .age <strong>Age: </strong> #{user.age}
+      //- .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
+      //- .email <strong>Email: </strong> #{user.email}
+      //- .age <strong>Age: </strong> #{user.age}
