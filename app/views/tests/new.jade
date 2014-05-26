@@ -17,17 +17,20 @@ block content
           .navbar-collapse.collapse
 
   .test
-    h1(data-courseId='#{courseId}') #{content.title} Test
+    h1#contentId(data-contentid='#{content._id}') #{content.title} Test
 
-    button.btn.btn-info#create-test Finished
-    button.btn.btn-info#add-question Add Question
+    button#create-test Finished
+    button#add-question Add Question
     .questions
       form
         .question-shell
           .question
-            input.form-control.question(type='text', name='question', placeholder='Write Question')
-            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            button.btn.btn-info.add-possible Add Possible Answer
+            input.question(type='text', name='question', placeholder='Write Question')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            button.add-possible Add Possible Answers
             select.answer(name='answer')
               option Correct Answer
 

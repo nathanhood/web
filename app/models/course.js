@@ -24,6 +24,13 @@ class Course{
     });
   }
 
+  static findAllByUserId(userId, fn) {
+    userId = userId.toString();
+    courses.find({teacherId:userId}).toArray((err, allCourses)=>{
+      fn(allCourses);
+    });
+  }
+
   static findByCourseId(courseId, fn){
     courseId = Mongo.ObjectID(courseId);
     courses.findOne({_id:courseId}, (err, course)=>{

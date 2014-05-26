@@ -2,6 +2,7 @@
 
 var traceur = require('traceur');
 var Course = traceur.require(__dirname + '/../models/course.js');
+var User = traceur.require(__dirname + '/../models/user.js');
 var Content = traceur.require(__dirname + '/../models/content.js');
 var multiparty = require('multiparty');
 var fs = require('fs');
@@ -27,14 +28,26 @@ exports.create = (req, res)=>{
     var summary = fields.summary.join();
     var img = files.image[0].originalFilename;
 
-    fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}`);
-    fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
-    fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);
+    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}`)){//checking if userId dir was made during login
+      fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}`);
+    }
 
-    var course = new Course(req.session.userId, title, summary, img);
-    course.save(()=>{
-      req.session.courseId = course._id;
-      res.redirect('/courses/edit');
-    });
+    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}/${title}`)){//checking if directory for course already exists
+      fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
+      fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);//need to normalize filepath
+
+      var course = new Course(req.session.userId, title, summary, img);
+      course.save(()=>{
+        User.findByUserId(req.session.userId, user=>{
+          req.session.courseId = course._id;
+          user.courses.push(req.session.courseId);
+          user.save(()=>{
+            res.redirect('/courses/edit');
+          });
+        });
+      });
+    }else{
+      res.redirect('/courses/edit');//need to write error message for user
+    }
   });
 };

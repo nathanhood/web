@@ -25,6 +25,7 @@ function load(app, fn){
 
   app.post('/users/register', dbg, users.register);
   app.post('/users/login', dbg, users.login);
+  app.get('/users/:userName', dbg, users.profile);
   app.get('/student', dbg, users.student);
   app.get('/teacher', dbg, users.teacher);
 
@@ -36,6 +37,7 @@ function load(app, fn){
   app.post('/teacher/:courseId/content/create', dbg, contents.create);
 
   app.get('/teacher/:contentId/test', dbg, tests.edit);
+  app.post('/teacher/:contentId/test/create', dbg, tests.create);
 
   console.log('Routes Loaded');
   fn();
