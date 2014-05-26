@@ -1,7 +1,6 @@
 extends ../shared/template
 
 block content
-
   .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
       .container
           .nav-bar-header
@@ -10,25 +9,15 @@ block content
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
-              .navbar-brand WEB: Course Preview
+              .navbar-brand WEB: New State Creation
               .float
-                .name.navbar-brand #{course.title}
+                .name.navbar-brand
                 button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
-  .courseinfo
-    a.btn.btn-info#take-course(href='/users/#{course.userName}/#{course._id}') Take Course
-    h2= course.title
-    img.courseimage(src='/img/#{course.image}')
-
-
-  .authorinfo
-    h2#username= course.userName
-
-  .stages
-    each contentTitle in course.contentTitles
-      h2= contentTitle
+  .content
+    .quill!= content.bodyText
+    .videos!= 
 
 block scripts
-  script(src='/js/es6/compiled/course.js')
   script(src='/js/es6/compiled/content.js')

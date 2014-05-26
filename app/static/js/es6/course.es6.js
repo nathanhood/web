@@ -8,13 +8,8 @@
 
     function initialize() {
       $('.stages').on('click', '.edit-test', goToCreateTest);
-      $('.courseinfo').on('click', '#take-course', takeCourse);
     }
 
-    function takeCourse(){
-      var courseId = $(this).attr('data-courseid');
-      
-    }
 
     function goToCreateTest(){
       var contentId = $(this).data('contentid');
