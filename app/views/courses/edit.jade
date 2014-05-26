@@ -17,7 +17,7 @@ block content
                 button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
-  .courseinfo
+  .courseinfoedit
     h2= course.title
     img.courseimage(src='/img/#{course.image}')
 
@@ -29,7 +29,7 @@ block content
 
   .stages
     each content in contents
-      h2= content.title
+      h2.content-title= content.title
       button.btn.btn-info.edit-content(data-contentId='#{content._id}') Edit Content
       button.btn.btn-info.edit-test(data-contentId='#{content._id}') Create/Edit Test
 

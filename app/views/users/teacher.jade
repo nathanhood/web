@@ -13,24 +13,30 @@ block content
              .navbar-brand WEB: Teacher
              .float
                .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-               img.smallpicture(src="/img/#{user._id}/#{user.picture}")
+               img.smallpicture(src="/img/#{user._id}/#{user.image}")
                button.logout.btn.btn-danger.login Log Out
          .navbar-collapse.collapse
   .profile
 
-  #create-course
-    h2 Create Course
-    form(action='/courses/create', method='POST', enctype='multipart/form-data')
-      input.form-control(type='text', name='title', placeholder='Course Title', required)
-      textarea.form-control(type='text', name='summary', placeholder='Brief Summary', required)
-      input(type='file', name='image')
-      button.submit.btn.btn-info#new-course Create Course
+  .container
+    .row
+      .col-md-6
+        h2 Create Course
+          form(action='/courses/create', method='POST', enctype='multipart/form-data')
+            input.form-control(type='text', name='title', placeholder='Course Title', required)
+            textarea.form-control(type='text', name='summary', placeholder='Brief Summary', required)
+            input.file(type='file', name='image')
+            button.submit.btn.btn-info#new-course Create Course
+      .col-md-5
+        h2 Current Courses
 
-  #current-courses
-    h2 Current Courses
-    #{user.currentCourses}
-    
-
-      //- .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-      //- .email <strong>Email: </strong> #{user.email}
-      //- .age <strong>Age: </strong> #{user.age}
+  //- #create-course
+  //-   h2 Create Course
+  //-   form(action='/courses/create', method='POST', enctype='multipart/form-data')
+  //-     input.form-control(type='text', name='title', placeholder='Course Title', required)
+  //-     textarea.form-control(type='text', name='summary', placeholder='Brief Summary', required)
+  //-     input(type='file', name='image')
+  //-     button.submit.btn.btn-info#new-course Create Course
+  //-
+  //- #current-courses
+  //-   h2 Current Courses

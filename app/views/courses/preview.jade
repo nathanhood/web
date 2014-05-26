@@ -13,21 +13,36 @@ block content
               .navbar-brand WEB: Course Preview
               .float
                 .name.navbar-brand #{course.title}
+                .name.navbar-brand #{course.userName}
                 button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
-  .courseinfo
-    button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
-    h2= course.title
-    img.courseimage(src='/img/#{course.image}')
+  //- .authorinfo
+  //-   h2= course.userName
 
+  .row
+    .col-md-2.col-xs-6
+      .thumbnail
+        img.courseimage(src='/img/#{course.image}', data-src='holder.js/300x200', alt='...')
+        .caption
+          h2= course.title
+          h3 Stages
+            each contentTitle in course.contentTitles
+              h4.contentTitle= contentTitle
+          button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
 
-  .authorinfo
-    h2= course.userName
+  //- .courseinfo
+  //-   h2= course.title
+  //-   img.courseimage(src='/img/#{course.image}')
 
-  .stages
-    each contentTitle in course.contentTitles
-      h2= contentTitle
+  //- .stages
+  //-   h3 Stages
+  //-   ul
+  //-     each contentTitle in course.contentTitles
+  //-       li
+  //-         h4.contentTitle= contentTitle
+
+  //button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
 
 block scripts
   script(src='/js/es6/compiled/course.js')

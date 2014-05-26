@@ -16,21 +16,39 @@ block content
         .navbar-brand WEB: Student
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-          img.smallpicture(src="/img/#{user._id}/#{user.picture}")
+          img.smallpicture(src="/img/#{user._id}/#{user.image}")
           button.logout.btn.btn-danger.login Log Out
       .navbar-collapse.collapse
 
   .profile
 
-  #student-courses
-    h2 Current Courses
+  .container
+    .row
+      .col-md-6
+        h2 Current Courses
+      .col-md-6
+        h2 Progress
+    .row
+      .col-md-1
+        h2.courseheading Courses
+    .row
+      each course in courses
+        .col-md-2#course-group
+          .course-title= course.title
+          .course-username By: #{course.userName}
+          img.course-image(src='/img/#{course.image}')
 
-  #progress
-    h2 Progress
-
-  #courses
-    h2 Courses
-    each course in courses
-      .course-title= course.title
-      .course-username By: #{course.userName}
-      img.course-image(src='/img/#{course.image}')
+  //- #student-courses
+  //-   h2 Current Courses
+  //-
+  //- #courses
+  //-   h2.courseheading Courses
+  //-   each course in courses
+  //-     #course-group
+  //-       .course-title= course.title
+  //-       .course-username By: #{course.userName}
+  //-       img.course-image(src='/img/#{course.image}')
+  //-       //.course-summary= course.summary
+  //-
+  //- #progress
+  //-   h2 Progress

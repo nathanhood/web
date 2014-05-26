@@ -16,19 +16,38 @@ block content
         .navbar-brand WEB: Profile
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-          img.smallpicture(src="/img/#{user._id}/#{user.picture}")
+          img.smallpicture(src="/img/#{user._id}/#{user.image}")
           button.logout.btn.btn-danger.login Log Out
       .navbar-collapse.collapse
 
-  img.picture(src="/img/#{user._id}/#{user.picture}")
-  .userprofile
-    .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-    .email <strong>Email: </strong> #{user.email}
-    .qualifications <strong>Qualifications: </strong> #{user.qualifications}
-    .bio <strong>Bio: </strong> #{user.bio}
-    .interests <strong>Interests: </strong> #{user.interests}
+  .container
+    .row
+      .col-md-2.col-xs-6
+        img.picture(src="/img/#{user._id}/#{user.image}")
+      .col-md-4.col-xs-8.userprofile
+        .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
+        .email <strong>Email: </strong> #{user.email}
+        .qualifications <strong>Qualifications: </strong> #{user.qualifications}
+        .bio <strong>Bio: </strong> #{user.bio}
+        .interests <strong>Interests: </strong> #{user.interests}
+    .row
+      .col-md-3.col-xs-5
+        .courses <strong>Courses: </strong>
+          each course in courses
+            .title <u>#{course.title}</u>
+            .summary #{course.summary}
 
-  .courses <strong>Courses: </strong>
-    each course in courses
-      .title <u>#{course.title}</u>
-      .summary #{course.summary}
+
+
+  //- img.picture(src="/img/#{user._id}/#{user.image}")
+  //- .userprofile
+  //-   .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
+  //-   .email <strong>Email: </strong> #{user.email}
+  //-   .qualifications <strong>Qualifications: </strong> #{user.qualifications}
+  //-   .bio <strong>Bio: </strong> #{user.bio}
+  //-   .interests <strong>Interests: </strong> #{user.interests}
+  //-
+  //- .courses <strong>Courses: </strong>
+  //-   each course in courses
+  //-     .title <u>#{course.title}</u>
+  //-     .summary #{course.summary}
