@@ -21,3 +21,10 @@ exports.create = (req, res)=>{
     });
   });
 };
+
+exports.index = (req, res)=>{
+  var title = req.params.contentTitle.replace('%', ' ');
+  Content.findByCourseIdAndTitle(req.params.courseId, title, content=>{
+    res.render('contents/index', {content:content, title:`WEB: ${content.title}`});
+  });
+};

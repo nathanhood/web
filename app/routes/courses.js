@@ -5,10 +5,25 @@ var Course = traceur.require(__dirname + '/../models/course.js');
 var User = traceur.require(__dirname + '/../models/user.js');
 var Content = traceur.require(__dirname + '/../models/content.js');
 var multiparty = require('multiparty');
+var _ = require('lodash');
 var fs = require('fs');
 
 exports.index = (req, res)=>{
-  res.render('courses/index', {title:'WEB: Create Content'});
+  var courseId = req.params.courseId;
+  var userName = req.params.userName;
+
+  Course.findByCourseId(courseId, course=>{
+    User.findByUserName(userName, user=>{
+      if(_.contains(user.currentCourses, courseId)){
+        res.render('courses/index', {course:course, title:`WEB: ${course.title}`});
+      }else{
+        user.currentCourses.push(courseId);
+        user.save(()=>{
+          res.render('courses/index', {course:course, title:`WEB: ${course.title}`});
+        });
+      }
+    });
+  });
 };
 
 exports.edit = (req, res)=>{
@@ -56,7 +71,7 @@ exports.preview = (req, res)=>{
   var title = req.params.courseTitle.replace('_', ' ');
   Course.findByTitleAndUserName(req.params.userName, title, course=>{
     User.findByUserName(req.params.userName, user=>{
-      res.render('courses/preview', {course:course, user:user, title:'WEB: #{course.title}: Preview'});
+      res.render('courses/preview', {course:course, user:user, title:`WEB: ${course.title}: Preview`});
     });
   });
 };

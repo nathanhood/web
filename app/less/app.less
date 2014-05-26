@@ -24,6 +24,7 @@ input.form-control {
 }
 
 body {
+  padding-top: 100px;
   margin-left: 50px;
   background-image: url('/img/background.png');
 }
@@ -56,13 +57,13 @@ body {
 }
 
 .profile {
-  margin-top: 100px;
+  //margin-top: 100px;
   font-size: 15px;
 }
 
-.courseinfoedit, .stage, .test {
-  margin-top: 100px;
-}
+// .courseinfoedit, .stage, .test {
+//   margin-top: 100px;
+// }
 
 #registration {
   margin: auto;
@@ -125,6 +126,10 @@ body {
   margin-left: 55px;
 }
 
+.stagequill {
+  margin-left: 50px;
+}
+
 .stage {
   margin-left: 50px;
 }
@@ -135,6 +140,31 @@ body {
 
 .stages button {
   margin-left: 5px;
+}
+
+.content-stages button {
+  margin-left: 5px;
+}
+
+.current-courses-box {
+  margin-bottom: 10px;
+  width: 77%;
+}
+
+.current-courses-edit-title {
+  margin-bottom: 10px;
+}
+
+.current-courses-box > h3 {
+  display: inline-block;
+  font-size: 20px;
+  text-align: left;
+  width: 80%;
+}
+
+.current-courses-box > a {
+  display: inline-block;
+  width: 20%;
 }
 
 .search {
@@ -190,8 +220,32 @@ body {
   margin-left: 5px;
 }
 
-.picture {
+.picture, .index-title-box > img {
   width: 150px;
+}
+
+.index-title-box, .stage-box {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.index-title-box > img {
+  display: inline-block;
+}
+
+.stage-box {
+  width: 400px;
+  // margin-top: 45px;
+}
+
+.stage {
+  border-bottom: 1px solid black;
+  a.btn, a.btn-info {
+    float: right;
+  }
+  a {
+    margin-top: 13px;
+  }
 }
 
 .summary {
@@ -199,7 +253,7 @@ body {
 }
 
 .picture {
-  margin-top: 100px;
+  //margin-top: 100px;
   //margin-left: -200px;
   margin-right: 1400px;
 }
@@ -207,7 +261,7 @@ body {
 .userprofile {
   // float: right;
   font-size: 15px;
-  margin-top: 100px;
+  //margin-top: 100px;
   //margin-left: -200px;
 }
 
@@ -235,6 +289,10 @@ body {
   width: 100px;
 }
 
+.courseimage {
+  margin-bottom: 10px;
+}
+
 .course-title, .content-title {
   font-size: 25px;
 }
@@ -252,13 +310,27 @@ body {
 //   width: 900px;
 // }
 
-// .courseinfo {
-//   margin-top: 100px;
-// }
-
-.thumbnail {
-  margin-top: 100px;
+.courseinfo, .stages {
+  display: inline-block;
+  vertical-align: top;
 }
+
+.stages {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.content-stages {
+  margin-top: 50px;
+}
+
+// .courseinfo {
+//   //margin-top: 100px;
+// }
+//
+// .thumbnail {
+//   //margin-top: 100px;
+// }
 
 .caption {
   margin: auto;
@@ -275,4 +347,27 @@ li {
 
 // .courseheading {
 //   margin-bottom: 50px;
+// }
+
+// .index {
+//   margin-top: 100px;
+// }
+
+.stage > h3 {
+  display: inline-block;
+  position: relative;
+  margin-right: 12rem;
+}
+
+.stage > h3 > a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// .content {
+//   margin-top: 100px;
 // }

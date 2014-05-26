@@ -27,7 +27,7 @@ block content
       input.form-control.title(type='text', name='title', placeholder='title')
       button.btn.btn-info#add-stage Add
 
-  .stages
+  .content-stages
     each content in contents
       h2.content-title= content.title
       button.btn.btn-info.edit-content(data-contentId='#{content._id}') Edit Content

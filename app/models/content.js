@@ -32,6 +32,12 @@ class Content{
     });
   }
 
+  static findByCourseIdAndTitle(courseId, title, fn){
+    contents.findOne({courseId:courseId, title:title}, (err, content)=>{
+      fn(content);
+    });
+  }
+
 }
 
 module.exports = Content; //exporting Class out

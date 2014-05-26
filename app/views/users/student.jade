@@ -34,9 +34,10 @@ block content
     .row
       each course in courses
         .col-md-2#course-group
-          .course-title= course.title
+          a(href='#').course-title= course.title
           .course-username By: #{course.userName}
-          img.course-image(src='/img/#{course.image}')
+          a(href='#')
+            img.course-image(src='/img/#{course.image}')
 
   //- #student-courses
   //-   h2 Current Courses

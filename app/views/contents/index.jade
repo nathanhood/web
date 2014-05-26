@@ -1,0 +1,23 @@
+extends ../shared/template
+
+block content
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+          .nav-bar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              .navbar-brand WEB: New State Creation
+              .float
+                .name.navbar-brand
+                button.logout.btn.btn-danger.login Log Out
+          .navbar-collapse.collapse
+
+  .content
+    .quill!= content.bodyText
+    .videos!= 
+
+block scripts
+  script(src='/js/es6/compiled/content.js')

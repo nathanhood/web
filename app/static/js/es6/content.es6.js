@@ -19,6 +19,7 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     $('#add-video').click(addVideoResource);
   }
 
+
   function addLinkResource(){
     var resource = $('.link-resource:first').clone();
     $(resource).children().val('').appendTo('.link-resource-shell');

@@ -17,30 +17,23 @@ block content
                 button.logout.btn.btn-danger.login Log Out
           .navbar-collapse.collapse
 
-  //- .authorinfo
-  //-   h2= course.userName
+  .courseinfo
+    h2= course.title
+    img.courseimage(src='/img/#{course.image}')
+    p= course.summary
 
-  .row
-    .col-md-2.col-xs-6
-      .thumbnail
-        img.courseimage(src='/img/#{course.image}', data-src='holder.js/300x200', alt='...')
-        .caption
-          h2= course.title
-          h3 Stages
-            each contentTitle in course.contentTitles
-              h4.contentTitle= contentTitle
-          button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
+  //-         h3 Stages
+  //-           each contentTitle in course.contentTitles
+  //-             h4.contentTitle= contentTitle
+  //-         button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
 
-  //- .courseinfo
-  //-   h2= course.title
-  //-   img.courseimage(src='/img/#{course.image}')
 
-  //- .stages
-  //-   h3 Stages
-  //-   ul
-  //-     each contentTitle in course.contentTitles
-  //-       li
-  //-         h4.contentTitle= contentTitle
+  .stages
+    h3 Stages
+      ul
+        each contentTitle in course.contentTitles
+          li
+            h4.contentTitle= contentTitle
 
   //button.btn.btn-info#take-course(data-courseid='#{course._id}') Take Course
 

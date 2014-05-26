@@ -63,6 +63,9 @@ exports.student = (req, res)=>{
 
 exports.teacher = (req, res)=>{
   User.findByUserId(req.session.userId, user=>{
-      res.render('users/teacher', {user:user, title:'WEB: Teacher'});
+    var userId = user._id.toString();
+    Course.findAllCourses({teacherId:userId}, courses=>{
+      res.render('users/teacher', {courses:courses, user:user, title:'WEB: Teacher'});
+    });
   });
 };

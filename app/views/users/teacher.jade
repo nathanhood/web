@@ -20,7 +20,7 @@ block content
 
   .container
     .row
-      .col-md-6
+      .col-md-7
         h2 Create Course
           form(action='/courses/create', method='POST', enctype='multipart/form-data')
             input.form-control(type='text', name='title', placeholder='Course Title', required)
@@ -28,7 +28,11 @@ block content
             input.file(type='file', name='image')
             button.submit.btn.btn-info#new-course Create Course
       .col-md-5
-        h2 Current Courses
+        h2.current-courses-edit-title Current Courses
+        each course in courses
+         .current-courses-box.clearfix
+            h3 #{course.title}
+            a.btn.btn-info(href='/courses/edit') Edit
 
   //- #create-course
   //-   h2 Create Course
