@@ -54,13 +54,15 @@ exports.profile = (req, res)=>{
 };
 
 exports.student = (req, res)=>{
-    User.findByUserId(req.session.userId, user=>{
-        res.render('users/student', {user:user, title:'WEB: Student'});
+  User.findByUserId(req.session.userId, user=>{
+    Course.findAllCourses({}, courses=>{
+      res.render('users/student', {user:user, courses:courses, title:'WEB: Student'});
     });
+  });
 };
 
 exports.teacher = (req, res)=>{
-    User.findByUserId(req.session.userId, user=>{
-        res.render('users/teacher', {user:user, title:'WEB: Teacher'});
-    });
+  User.findByUserId(req.session.userId, user=>{
+      res.render('users/teacher', {user:user, title:'WEB: Teacher'});
+  });
 };

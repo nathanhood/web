@@ -20,7 +20,7 @@ class User{
     this.courses = [];
     this.currentCourses = [];
     this.completeCourses = [];
-    this.picture = files.image[0].originalFilename;
+    this.image = files.image[0].originalFilename;
   }
 
   register(fn){

@@ -27,3 +27,10 @@ block content
 
   #progress
     h2 Progress
+
+  #courses
+    h2 Courses
+    each course in courses
+      .course-title= course.title
+      .course-username By: #{course.userName}
+      img.course-image(src='/img/#{course.image}')

@@ -36,9 +36,9 @@ exports.create = (req, res)=>{
       fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
       fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);//need to normalize filepath
 
-      var course = new Course(req.session.userId, title, summary, img);
-      course.save(()=>{
-        User.findByUserId(req.session.userId, user=>{
+      User.findByUserId(req.session.userId, user=>{
+        var course = new Course(req.session.userId, title, user.userName, summary, img);
+        course.save(()=>{
           req.session.courseId = course._id;
           user.courses.push(req.session.courseId);
           user.save(()=>{
@@ -49,5 +49,14 @@ exports.create = (req, res)=>{
     }else{
       res.redirect('/courses/edit');//need to write error message for user
     }
+  });
+};
+
+exports.preview = (req, res)=>{
+  var title = req.params.courseTitle.replace('_', ' ');
+  Course.findByTitleAndUserName(req.params.userName, title, course=>{
+    User.findByUserName(req.params.userName, user=>{
+      res.render('courses/preview', {course:course, user:user, title:'WEB: #{course.title}: Preview'});
+    });
   });
 };
