@@ -27,10 +27,13 @@ exports.create = (req, res)=>{
     var summary = fields.summary.join();
     var img = files.image[0].originalFilename;
 
-    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}/${title}`)){//checking if directory for course already exists
+    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}`)){//checking if userId dir was made during login
       fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}`);
+    }
+
+    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}/${title}`)){//checking if directory for course already exists
       fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
-      fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);
+      fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);//need to normalize filepath
 
       var course = new Course(req.session.userId, title, summary, img);
       course.save(()=>{

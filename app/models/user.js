@@ -6,20 +6,20 @@ var _ = require('lodash');
 var bcrypt = require('bcrypt');
 
 class User{
-  constructor(obj){
-    this.email = obj.email;
-    this.password = obj.password;
-    this.userName = obj.userName;
-    this.firstName = obj.firstName;
-    this.lastName = obj.lastName;
-    this.age = obj.age;
-    this.gender = obj.gender;
-    this.interests = obj.interests;
-    this.qualifications = obj.qualifications;
-    this.bio = obj.bio;
+  constructor(fields, files){
+    this.email = fields.email[0];
+    this.password = fields.password[0];
+    this.userName = fields.userName[0];
+    this.firstName = fields.firstName[0];
+    this.lastName = fields.lastName[0];
+    this.age = fields.age[0];
+    this.gender = fields.gender[0];
+    this.interests = fields.interests[0];
+    this.qualifications = fields.qualifications[0];
+    this.bio = fields.bio[0];
     this.courses = [];
     this.completeCourses = [];
-    this.picture = obj.image;
+    this.picture = files.image[0].originalFilename;
   }
 
   register(fn){
