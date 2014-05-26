@@ -18,6 +18,7 @@ class User{
     this.qualifications = fields.qualifications[0];
     this.bio = fields.bio[0];
     this.courses = [];
+    this.currentCourses = [];
     this.completeCourses = [];
     this.picture = files.image[0].originalFilename;
   }
