@@ -27,14 +27,18 @@ exports.create = (req, res)=>{
     var summary = fields.summary.join();
     var img = files.image[0].originalFilename;
 
-    fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}`);
-    fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
-    fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);
+    if(!fs.existsSync(`${__dirname}/../static/img/${req.session.userId}/${title}`)){//checking if directory for course already exists
+      fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}`);
+      fs.mkdirSync(`${__dirname}/../static/img/${req.session.userId}/${title}`);
+      fs.renameSync(files.image[0].path, `${__dirname}/../static/img/${req.session.userId}/${title}/${img}`);
 
-    var course = new Course(req.session.userId, title, summary, img);
-    course.save(()=>{
-      req.session.courseId = course._id;
-      res.redirect('/courses/edit');
-    });
+      var course = new Course(req.session.userId, title, summary, img);
+      course.save(()=>{
+        req.session.courseId = course._id;
+        res.redirect('/courses/edit');
+      });
+    }else{
+      res.redirect('/courses/edit');//need to write error message for user
+    }
   });
 };

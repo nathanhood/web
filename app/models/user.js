@@ -9,6 +9,7 @@ class User{
   constructor(obj){
     this.email = obj.email;
     this.password = obj.password;
+    this.userName = obj.userName;
     this.firstName = obj.firstName;
     this.lastName = obj.lastName;
     this.age = obj.age;
@@ -17,19 +18,22 @@ class User{
     this.qualifications = obj.qualifications;
     this.bio = obj.bio;
     this.courses = [];
-    this.picture = '/img/';
+    this.completeCourses = [];
+    this.picture = obj.image;
   }
 
   register(fn){
     users.findOne({email:this.email}, (err, u)=>{
-      if(u){//if user exists,
-        fn(null);
-      }else{
-        this.password = bcrypt.hashSync(this.password, 8); //hashed/encrypted version of password
-        users.save(this, (err, u)=>{
-          fn(u);
-        });
-      }
+      users.findOne({userName:this.userName}, (err, u2)=>{
+        if(u || u2){//if user email or username exists,
+          fn(null);
+        }else{
+          this.password = bcrypt.hashSync(this.password, 8); //hashed/encrypted version of password
+          users.save(this, (err, u)=>{
+            fn(u);
+          });
+        }
+      });
     });
   }
 

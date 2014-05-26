@@ -2,16 +2,24 @@
 
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
+var multiparty = require('multiparty');
+// var fs = require('fs');
 
 exports.register = (req, res)=>{
-  var user = new User(req.body);
-  user.register(u=>{
-    if(u){
-      req.session.userId = u._id;
-    }else{
-      req.session.userId = null; //message - account already exists
-    }
-    res.redirect('/');
+  var form = new multiparty.Form();
+
+  form.parse(req, (err, fields, files)=>{
+    console.log(fields);
+    console.log(files);
+    // var user = new User(req.body);
+    // user.register(u=>{
+    //   if(u){
+    //     req.session.userId = u._id;
+    //   }else{
+    //     req.session.userId = null; //message - account already exists
+    //   }
+    //   res.redirect('/');
+    // });
   });
 };
 
