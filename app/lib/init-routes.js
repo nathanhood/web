@@ -25,10 +25,12 @@ function load(app, fn){
 
   app.post('/users/register', dbg, users.register);
   app.post('/users/login', dbg, users.login);
+  app.get('/users/:userName', dbg, users.profile);
   app.get('/student', dbg, users.student);
   app.get('/teacher', dbg, users.teacher);
 
-  app.get('/student/courses/:courseId', dbg, courses.index);//student side - course index
+  app.get('/users/:userName/:courseTitle', dbg, courses.index);//student side - course index
+  app.get('/users/:userName/:courseTitle/preview', dbg, courses.preview);
   app.get('/courses/edit', dbg, courses.edit);//teacher side
   app.post('/courses/create', dbg, courses.create);
 

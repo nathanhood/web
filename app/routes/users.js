@@ -4,6 +4,7 @@
 
 var traceur = require('traceur');
 var User = traceur.require(__dirname + '/../models/user.js');
+var Course = traceur.require(__dirname + '/../models/course.js');
 var multiparty = require('multiparty');
 var fs = require('fs');
 
@@ -44,14 +45,24 @@ exports.login = (req, res)=>{
   });
 };
 
-exports.student = (req, res)=>{
-    User.findByUserId(req.session.userId, user=>{
-        res.render('users/student', {user:user, title:'WEB: Student'});
+exports.profile = (req, res)=>{
+  User.findByUserName(req.params.userName, user=>{
+    Course.findAllByUserId(user._id, courses=>{
+      res.render('users/profile', {user:user, courses:courses, title:`WEB: ${user.userName}`});
     });
+  });
+};
+
+exports.student = (req, res)=>{
+  User.findByUserId(req.session.userId, user=>{
+    Course.findAllCourses({}, courses=>{
+      res.render('users/student', {user:user, courses:courses, title:'WEB: Student'});
+    });
+  });
 };
 
 exports.teacher = (req, res)=>{
-    User.findByUserId(req.session.userId, user=>{
-        res.render('users/teacher', {user:user, title:'WEB: Teacher'});
-    });
+  User.findByUserId(req.session.userId, user=>{
+      res.render('users/teacher', {user:user, title:'WEB: Teacher'});
+  });
 };

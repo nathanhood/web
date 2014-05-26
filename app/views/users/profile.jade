@@ -13,26 +13,18 @@ block content
         //- .navbar-form.navbar-left.studentsearch(role='search')
         //-   input.search.form-group(type='text', class='form-control', placeholder='Search')
         //-   button.searchbutton.btn.btn-default Search
-        .navbar-brand WEB: Student
+        .navbar-brand WEB: Profile
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
           button.logout.btn.btn-danger.login Log Out
       .navbar-collapse.collapse
 
   .profile
-  //-     .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-  //-     .email <strong>Email: </strong> #{user.email}
-  //-     .age <strong>Age: </strong> #{user.age}
+    .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
+    .email <strong>Email: </strong> #{user.email}
+    .age <strong>Age: </strong> #{user.age}
 
-  #student-courses
-    h2 Current Courses
-
-  #progress
-    h2 Progress
-
-  #courses
-    h2 Courses
+  .courses
     each course in courses
-      .course-title= course.title
-      .course-username By: #{course.userName}
-      img.course-image(src='/img/#{course.image}')
+      .title #{course.title}
+      .summary #{course.summary}

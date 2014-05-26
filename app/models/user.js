@@ -20,7 +20,7 @@ class User{
     this.courses = [];
     this.currentCourses = [];
     this.completeCourses = [];
-    this.picture = files.image[0].originalFilename;
+    this.image = files.image[0].originalFilename;
   }
 
   register(fn){
@@ -45,6 +45,19 @@ class User{
     }else{
       fn(null);
     }
+  }
+
+  save(fn){
+    users.save(this, ( )=>{
+      fn();
+    });
+  }
+
+  static findByUserName(userName, fn) {
+    users.findOne({userName:userName}, (err, user)=>{
+      user = _.create(User.prototype, user);
+      fn(user);
+    });
   }
 
   static findByUserEmail(email, fn){
