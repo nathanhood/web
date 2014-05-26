@@ -1,0 +1,38 @@
+extends ../shared/template
+
+block content
+
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+          .nav-bar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              .navbar-brand WEB: Create Test
+              .float
+                .name.navbar-brand #{content.title} Test
+                button.logout.btn.btn-danger.login Log Out
+          .navbar-collapse.collapse
+
+  .test
+    h1#contentId(data-contentid='#{content._id}') #{content.title} Test
+
+    button#create-test Finished
+    button#add-question Add Question
+    .questions
+      form
+        .question-shell
+          .question
+            input.question(type='text', name='question', placeholder='Write Question')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            button.add-possible Add Possible Answers
+            select.answer(name='answer')
+              option Correct Answer
+
+block scripts
+  script(src='/js/es6/compiled/test.js')
