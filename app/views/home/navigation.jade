@@ -2,6 +2,7 @@ extends ../shared/template
 
 block content
   .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+
       .container
           .nav-bar-header
               button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -13,12 +14,19 @@ block content
           .navbar-collapse.collapse
               .float
                 a.name.navbar-brand(href='/users/#{user._id}') Welcome, #{user.firstName} #{user.lastName}
-                a.logout.btn.btn-dangera(href='/logout') Log Out
+                a.logout.btn.btn-danger(href='/logout') Log Out
+          .navbar-collapse.collapse
 
-            .navbar-collapse.collapse
 
-  .main-navigation
-    h2.learn Learn
-      a(href='/learn')
-    h2.teach Teach
-      a(href='/teach')
+  .welcome-box
+    h1.welcome Welcome to <span class='welcome--page-title'>WEB</span>
+
+  .web-pic-box
+    img(src='/img/web.svg')
+
+  .confirmation
+    .main-navigation
+      h2.learn Learn
+        a(href='/learn')
+      h2.teach Teach
+        a(href='/teach')

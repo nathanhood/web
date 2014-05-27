@@ -15,11 +15,12 @@ block content
           a.logout.btn.btn-danger(href='/logout') Log Out
         .navbar-collapse.collapse
 
-  .index
+  .course-shell
     h1= course.title
     img(src='/img/#{course.image}')
-    each title in course.contentTitles
-      .stage
-        h3= title
-          a(href='/users/#{course.userName}/#{course._id}/#{title}')
-        a.btn.btn-info(href='/users/#{course.userName}/#{course._id}/#{title}/quiz') Quiz
+    .course-inner
+      each title in course.contentTitles
+        .stage.stage-index-page
+          h3= title
+            a(href='/users/#{course.userName}/#{course._id}/#{title}')
+          a.btn.btn-info(href='/users/#{course.userName}/#{course._id}/#{title}/quiz') Quiz

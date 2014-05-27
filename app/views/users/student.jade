@@ -24,16 +24,22 @@ block content
   //-     .email <strong>Email: </strong> #{user.email}
   //-     .age <strong>Age: </strong> #{user.age}
 
-  #student-courses
-    h2 Current Courses
-      
 
-  #progress
-    h2 Progress
 
-  #courses
-    h2 Courses
-    each course in courses
-      .course-title= course.title
-      .course-username By: #{course.userName}
-      img.course-image(src='/img/#{course.image}')
+  .container-box
+
+    #student-courses
+      h2 Current Courses
+
+    #progress
+      h2 Progress
+
+    #courses
+      h2 All Courses
+      each course in courses
+        .courses-inner-box
+          .course-title= course.title
+            a(href='/users/#{user.userName}/#{course._id}')
+          .course-username By: #{course.userName}
+          a(href='/users/#{user.userName}/#{course._id}')
+            img.course-image(src='/img/#{course.image}')

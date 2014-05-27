@@ -19,8 +19,12 @@ block content
                   button.signin.btn.btn-success.login Sign In
                   button.register.btn.btn-warning.btn.btn-primary.btn(type='submit', data-toggle='modal', data-target='#myModal') Register
 
-  h1.welcome Welcome to WEB: Where Education Begins
-  h3.subwelcome Sign In or Register to Begin
+  .welcome-box
+    h1.welcome Welcome to <span class='welcome--page-title'>WEB</span>
+    h3.subwelcome <span>Sign In</span> or </span>Register</span> to Begin
+
+  .web-pic-box
+    img(src='/img/web.svg')
 
   .modal.fade#myModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog

@@ -29,5 +29,6 @@ block content
     h2 Current Courses
       each course in courses
         .title= course.title
-        .author= user.userName
+          a(href='/users/#{user.userName}/#{course._id}')
+        .author By: #{user.userName}
         img.image(src='/img/#{course.image}')

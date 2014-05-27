@@ -18,20 +18,22 @@ block content
   .test
     h1#contentId(data-contentid='#{content._id}') #{content.title} Test
 
-    button#create-test Finished
-    button#add-question Add Question
+    button#create-test.btn.btn-success Finished
+    button#add-question.btn.btn-warning Add Question
     .questions
       form
         .question-shell
           .question
-            input.question(type='text', name='question', placeholder='Write Question')
-            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            button.add-possible Add Possible Answers
-            select.answer(name='answer')
-              option Correct Answer
+            input.form-control.question(type='text', name='question', placeholder='Write Question')
+          .answer-box
+            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+        .
+        button.btn-info.add-possible Add Possible Answers
+        select.answer(name='answer')
+          option Correct Answer
 
 block scripts
   script(src='/js/es6/compiled/test.js')
