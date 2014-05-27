@@ -24,15 +24,17 @@ block content
   //-     .email <strong>Email: </strong> #{user.email}
   //-     .age <strong>Age: </strong> #{user.age}
 
-  #student-courses
-    h2 Current Courses
+  .container-box
 
-  #progress
-    h2 Progress
+    #student-courses
+      h2 Current Courses
 
-  #courses
-    h2 Courses
-    each course in courses
-      .course-title= course.title
-      .course-username By: #{course.userName}
-      img.course-image(src='/img/#{course.image}')
+    #progress
+      h2 Progress
+
+    #courses
+      h2 Courses
+      each course in courses
+        .course-title= course.title
+        .course-username By: #{course.userName}
+        img.course-image(src='/img/#{course.image}')
