@@ -671,8 +671,9 @@ html {
 
 body {
   background: @midnight-blue;
+  overflow-x: hidden !important;
   // background-image: url('/img/background.png');
-  padding: @lh * 3;
+  padding: (@lh * 3) (@lh * 3) (@lh * 6) (@lh * 3);
 }
 
 .welcome-box {
@@ -709,20 +710,24 @@ body {
   }
 }
 
+.main-navigation {
+  display: table;
+  width: 100%;
+  .learn,
+  .teach {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 45%;
+  }
+}
+
+
 input {
   margin: 5px 5px;
 }
 
-.quill-wrapper, #editor.sc-container {
-  background-color: hsl(0, 0%, 100%);
-  //border-left: 1px solid hsl(0, 0%, 80%);
-  //border-right: 1px solid hsl(0, 0%, 80%);
-  box-shadow: 1px 1px 10px gray;
-  max-width: 960px;
-  min-width: 320px;
-  width: 66%;
-  margin-top: 10px;
-}
+
 
 textarea.form-control {
   width: 500px;
@@ -736,8 +741,8 @@ input.form-control {
 
 .gender, .answer {
   height: 30px;
-  margin-right: 379px;
-  margin-bottom: 5px;
+  // margin-right: 379px;
+  // margin-bottom: 5px;
 }
 
 .gender {
@@ -785,21 +790,33 @@ input.form-control {
   margin-right: 360px;
 }
 
+#create-course,
 #current-courses {
-  float: right;
-  margin-right: 400px;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  width: 48%;
+  textarea {
+    width: @lh * 12;
+  }
+  h2 {
+    color: ivory;
+    font-size: @fs * 1.1;
+    text-align: left;
+  }
 }
 
-#student-courses, .resources, #create-course {
+.courses-inner-box {
   float: left;
+  display: inline-block;
+  text-align: left;
+  &:nth-of-type(n+2) {
+    margin-left: @lh * 2;
+  }
 }
-
-// #progress {
-//   margin-right: 400px;
-// }
 
 .courseimage {
-  width: 150px;
+  max-width: 150px;
 }
 
 .sc-bold, .sc-italic, .sc-strike, .sc-underline, .sc-link, .sc-image {
@@ -811,23 +828,43 @@ input.form-control {
   margin-left: 5px;
 }
 
+
+.stage-wrapper {
+  width: 60%;
+}
+
+.quill-wrapper, #editor.sc-container {
+  background-color: hsl(0, 0%, 100%);
+  //border-left: 1px solid hsl(0, 0%, 80%);
+  //border-right: 1px solid hsl(0, 0%, 80%);
+  box-shadow: 1px 1px 10px gray;
+  max-width: 960px;
+  min-width: 320px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.resources, .videos {
+  display: inline-block;
+}
+
 .videos {
-  margin-left: 300px;
+  float: right;
 }
 
 #create-content {
-  margin-top: 50px;
-  margin-right: 985px;
-  margin-left: 55px;
+  margin-bottom: @lh * 1.5;
+  margin-left: 55%;
+  text-align: right;
 }
 
-.stage, .resources, .videos {
-  margin-left: 50px;
-}
+// .stage, .resources, .videos {
+//   margin-left: 50px;
+// }
 
-.videos {
-  margin-left: 350px;
-}
+// .videos {
+//   margin-left: 350px;
+// }
 
 .stages button {
   margin-left: 5px;
@@ -845,6 +882,19 @@ input.form-control {
 
 .studentsearch {
   margin: auto;
+}
+.question-shell {
+  .question {
+    height: 3rem;
+
+  }
+  .question, .answer-box {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .answer-box {
+    width: 60%;
+  }
 }
 
 .form-control.question, .form-control.possible-answer {
@@ -922,11 +972,14 @@ input.form-control {
 }
 
 .main-navigation {
+  color: ivory;
   max-width: 900px;
-  margin-top: 250px;
+  margin-top: @lh * 1;
+  // margin-top: 250px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  text-shadow: 0 0 2px ivory;
 }
 
 .content {
@@ -938,13 +991,40 @@ input.form-control {
   #student-courses,
   #progress,
   #courses {
-    background: ivory;
-    border: 1px solid green;
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
+    color: ivory;
+    margin-bottom: @lh * 2;
     h2 {
       font-size: @fs;
+      text-align: left;
     }
   }
+}
+
+.t-center {
+  text-align: center;
+  h2 {
+    text-align: left;
+  }
+}
+
+.a-wrapper, .stages {
+  display: inline-block;
+  vertical-align: middle;
+  h2 {
+    color: ivory;
+    font-size: @fs * 1.1;
+  }
+}
+
+.stages {
+  margin-left: 15%;
+}
+
+#add-stage {
+  float: right;
+}
+
+.stage h1 {
+  color: ivory;
+  font-size: @fs * 1.2;
 }

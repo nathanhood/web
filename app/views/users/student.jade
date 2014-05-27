@@ -33,8 +33,9 @@ block content
       h2 Progress
 
     #courses
-      h2 Courses
+      h2 All Courses
       each course in courses
-        .course-title= course.title
-        .course-username By: #{course.userName}
-        img.course-image(src='/img/#{course.image}')
+        .courses-inner-box
+          .course-title= course.title
+          .course-username By: #{course.userName}
+          img.course-image(src='/img/#{course.image}')
