@@ -20,6 +20,16 @@ function ajax(url, verb) {
     $('#add-question').click(addQuestion);
     $('.question-shell').on('click', '.add-possible', addPossibleAnswer);
     $('#create-test').click(createTest);
+    $('#submit-test').click(submitTest);
+  }
+  function submitTest(event) {
+    var testId = $('#testId').attr('data-testid');
+    var form = $('form#test').serializeArray();
+    ajax(("/learn/" + testId + "/grade"), 'POST', form, (function(html) {
+      console.log(html);
+      $('#results').append(html);
+    }));
+    event.preventDefault();
   }
   var form = [];
   var test = [];
@@ -27,7 +37,9 @@ function ajax(url, verb) {
     form = $('form').serializeArray();
     while (form.length > 0) {
       formatQuestionAnswers(form);
+      debugger;
     }
+    indexQuestions();
     var contentId = $('#contentId').data('contentid');
     var contentTitle = $('#contentId').text();
     ajax(("/teacher/" + contentId + "/test/create"), 'POST', {
@@ -37,6 +49,13 @@ function ajax(url, verb) {
     }, (function() {
       window.location('/courses/edit');
     }));
+  }
+  function indexQuestions() {
+    for (var i = 0; i < test.length; i++) {
+      var obj = {};
+      obj.index = i;
+      test[$traceurRuntime.toProperty(i)].push(obj);
+    }
   }
   function formatQuestionAnswers(array) {
     var question = [];

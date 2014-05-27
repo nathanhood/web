@@ -17,8 +17,25 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     $('#create-content').click(createContent);
     $('#add-link').click(addLinkResource);
     $('#add-video').click(addVideoResource);
+    getVideos();
+    getRefs();
   }
 
+
+  function getRefs(){
+    var refs = $('.ref').map((index, r)=>{
+      var newRef = $(r).attr('data-txt').replace(/[+]/g, ' ');
+      $(r).text(newRef);
+    }).toArray();
+    console.log(refs);
+  }
+
+  function getVideos(){
+    var videos = $('.videos').find('.video').map((index, video)=>$(video).data('path')).toArray();
+    for(var i = 0; i < videos.length; i++){
+      $('.videos').append('<iframe width=560, height=315, src="//www.youtube.com/embed/'+videos[i]+'", frameborder=0, allowfullscreen></iframe>');
+    }
+	}
 
   function addLinkResource(){
     var resource = $('.link-resource:first').clone();
@@ -47,19 +64,27 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
 
     var urls = array.map((obj, i)=>{
       if(i % 2){
+
         return obj;
       }
     });
 
     var finalTitles = _.compact(titles);
     var finalUrls = _.compact(urls);
+
     var resources = [];
     for(var j = 0 ; j < finalTitles.length; j++){
+      console.log(finalTitles[j]);
+
       var assignment = _.assign(finalTitles[j], finalUrls[j]);
       resources.push(assignment);
     }
 
-    var videos = $('.video-resource-shell').find('.text').map((index, video)=>$(video).val()).toArray();
+    var videos = $('.video-resource-shell').find('.text').map((index, video)=>{
+      var split = $(video).val().split('=');
+      return split[1];
+    }).toArray();
+    console.log(videos);
     var html = editor.getHTML();
     var title = $('h1').text();
     var courseId = $('h1').data('courseid');

@@ -24,10 +24,12 @@ function load(app, fn){
   app.get('/help', dbg, home.help);
 
   app.post('/users/register', dbg, users.register);
-  app.post('/users/login', dbg, users.login);
+  app.post('/login', dbg, users.login);
+  app.get('/logout', dbg, users.logout);
   app.get('/users/:userName', dbg, users.profile);
-  app.get('/student', dbg, users.student);
-  app.get('/teacher', dbg, users.teacher);
+  app.get('/confirmation', dbg, users.confirmation);
+  app.get('/learn', dbg, users.learn);
+  app.get('/teach', dbg, users.teach);
 
   app.get('/users/:userName/:courseId', dbg, courses.index);//student side - course index
   app.get('/users/:userName/:courseTitle/preview', dbg, courses.preview);
@@ -38,8 +40,10 @@ function load(app, fn){
   app.get('/teacher/:courseId/content', dbg, contents.new);
   app.post('/teacher/:courseId/content/create', dbg, contents.create);
 
+  app.get('/users/:userName/:courseId/:contentTitle/quiz', dbg, tests.index);
   app.get('/teacher/:contentId/test', dbg, tests.edit);
   app.post('/teacher/:contentId/test/create', dbg, tests.create);
+  app.post('/learn/:testId/grade', dbg, tests.grade);
 
   console.log('Routes Loaded');
   fn();

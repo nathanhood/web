@@ -1,0 +1,41 @@
+extends ../shared/template
+
+block content
+
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+      .container
+          .nav-bar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+              .navbar-brand WEB: Create Test
+              .float
+                .name.navbar-brand #{content.title} Test
+                button.logout.btn.btn-danger.login Log Out
+          .navbar-collapse.collapse
+
+  .test
+    h1#testId(data-testid='#{test._id}') #{content.title} Test
+    #results
+
+    .questions
+      form#test
+        each question in test.qAndA
+          .question= question[0].value
+          input(type='radio', name='#{question[6].index}', value='#{question[1].value}')
+          .answer1= question[1].value
+          input(type='radio', name='#{question[6].index}', value='#{question[2].value}')
+          .answer2= question[2].value
+          input(type='radio', name='#{question[6].index}', value='#{question[3].value}')
+          .answer3= question[3].value
+          input(type='radio', name='#{question[6].index}', value='#{question[4].value}')
+          .answer4= question[4].value
+          //- input.correct-answer(type='radio', name='#{question[6].index}', value='#{question[5].value}' checked=true)
+          //- .correct-answer= question[5].value
+        button.btn.btn-info#submit-test Submit Answers
+
+
+block scripts
+  script(src='/js/es6/compiled/test.js')

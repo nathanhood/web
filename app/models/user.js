@@ -6,10 +6,10 @@ var _ = require('lodash');
 var bcrypt = require('bcrypt');
 
 class User{
-  constructor(fields, files){
+  constructor(fields, files, userName){
     this.email = fields.email[0];
     this.password = fields.password[0];
-    this.userName = fields.userName[0];
+    this.userName = userName;
     this.firstName = fields.firstName[0];
     this.lastName = fields.lastName[0];
     this.age = fields.age[0];

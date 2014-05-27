@@ -1,4 +1,4 @@
-/* global editor, _ */
+/* global editor, _, json */
 /* jshint unused:false */
 
 function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//defaulting to html
@@ -15,6 +15,20 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     $('#add-question').click(addQuestion);
     $('.question-shell').on('click', '.add-possible', addPossibleAnswer);
     $('#create-test').click(createTest);
+    $('#submit-test').click(submitTest);
+  }
+
+  function submitTest(event){
+    var testId = $('#testId').attr('data-testid');
+    var form = $('form#test').serializeArray();
+    ajax(`/learn/${testId}/grade`, 'POST', form, html=>{
+      // console.log(jsonObj);
+      // debugger;
+      // var results = $(`<div>You got ${jsonObj.correct} out of ${jsonObj.total} correct</div>`);
+      console.log(html);
+      $('#results').append(html);
+    });
+    event.preventDefault();
   }
 
   var form = [];
@@ -24,13 +38,23 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     form = $('form').serializeArray();
     while(form.length > 0){
       formatQuestionAnswers(form);
+      debugger;
     }
+    indexQuestions();
 
     var contentId = $('#contentId').data('contentid');
     var contentTitle = $('#contentId').text();
     ajax(`/teacher/${contentId}/test/create`, 'POST', {contentId:contentId, contentTitle:contentTitle, qAndA:test}, ()=>{
       window.location('/courses/edit');
     });
+  }
+
+  function indexQuestions(){
+    for(var i = 0; i < test.length; i++){
+      var obj = {};
+      obj.index = i;
+      test[i].push(obj);
+    }
   }
 
   function formatQuestionAnswers(array){

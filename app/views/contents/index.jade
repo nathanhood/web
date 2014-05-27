@@ -16,8 +16,17 @@ block content
           .navbar-collapse.collapse
 
   .content
+    .reference-links
+      if(content.links)
+        each link in content.links
+          a.ref(href='http://#{link.url}', data-txt='#{link.text}')
     .quill!= content.bodyText
-    .videos!= 
+    .videos
+      if(content.videos)
+        each video in content.videos
+          .video(data-path='#{video}')
+
+
 
 block scripts
   script(src='/js/es6/compiled/content.js')

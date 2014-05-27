@@ -1,7 +1,7 @@
 'use strict';
 
 var contents = global.nss.db.collection('contents');
-// var Mongo = require('mongodb');
+var Mongo = require('mongodb');
 // var _ = require('lodash');
 
 
@@ -21,13 +21,15 @@ class Content{
   }
 
   static findAllByCourseId(courseId, fn){
+    console.log(courseId);
     contents.find({courseId:courseId}).toArray((err, contents)=>{
       fn(contents);
     });
   }
 
-  static findByContentId(courseId, fn){
-    contents.findOne({courseId:courseId}, (err, content)=>{
+  static findByContentId(contentId, fn){
+    contentId = Mongo.ObjectID(contentId);
+    contents.findOne({_id:contentId}, (err, content)=>{
       fn(content);
     });
   }
@@ -37,6 +39,7 @@ class Content{
       fn(content);
     });
   }
+
 
 }
 

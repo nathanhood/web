@@ -16,7 +16,8 @@ block content
         .navbar-brand WEB: Profile
         .float
           .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-          button.logout.btn.btn-danger.login Log Out
+          a.logout.btn.btn-danger(href='/logout') Log Out
+
       .navbar-collapse.collapse
 
   .profile
