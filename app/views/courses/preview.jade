@@ -10,24 +10,26 @@ block content
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
-              .navbar-brand WEB: Course Preview
+              a.navbar-brand(href='/confirmation') WEB: Where Education Begins
               .float
-                .name.navbar-brand #{course.title}
-                button.logout.btn.btn-danger.login Log Out
+                a.logout.btn.btn-danger(href='/logout') Log Out
           .navbar-collapse.collapse
 
   .courseinfo
     a.btn.btn-info#take-course(href='/users/#{course.userName}/#{course._id}') Take Course
     h2= course.title
+    .summary= course.summary
     img.courseimage(src='/img/#{course.image}')
 
 
   .authorinfo
-    h2#username= course.userName
+    h2#username By #{course.userName}
 
   .stages
     each contentTitle in course.contentTitles
       h2= contentTitle
+
+
 
 block scripts
   script(src='/js/es6/compiled/course.js')

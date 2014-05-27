@@ -35,8 +35,6 @@ exports.grade = (req, res)=>{
 
   Test.findByTestId(testId, test=>{
     test.gradeTest(answers, (correct, total, grade)=>{
-      console.log('--------------------------------');
-      console.log(grade);
       res.render('tests/testalert', {correct:correct, total:total, grade:grade});
     });
   });

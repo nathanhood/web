@@ -17,9 +17,12 @@ exports.index = (req, res)=>{
       if(_.contains(user.currentCourses, courseId)){
         res.render('courses/index', {course:course, title:`WEB: ${course.title}`});
       }else{
-        user.currentCourses.push(courseId);
-        user.save(()=>{
-          res.render('courses/index', {course:course, title:`WEB: ${course.title}`});
+        course.students.push(user._id);
+        course.save(()=>{
+          user.currentCourses.push(courseId);
+          user.save(()=>{
+            res.render('courses/index', {course:course, title:`WEB: ${course.title}`});
+          });
         });
       }
     });

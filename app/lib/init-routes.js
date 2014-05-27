@@ -23,7 +23,7 @@ function load(app, fn){
   app.get('/', dbg, home.index);
   app.get('/help', dbg, home.help);
 
-  app.post('/users/register', dbg, users.register);
+  app.post('/register', dbg, users.register);
   app.post('/login', dbg, users.login);
   app.get('/logout', dbg, users.logout);
   app.get('/users/:userName', dbg, users.profile);

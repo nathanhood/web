@@ -38,7 +38,6 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     form = $('form').serializeArray();
     while(form.length > 0){
       formatQuestionAnswers(form);
-      debugger;
     }
     indexQuestions();
 

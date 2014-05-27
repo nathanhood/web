@@ -25,8 +25,18 @@ class Course{
     });
   }
 
+  // static findCurrentCoursesByUser(currentCourses, fn){
+  //   var allCurrent = async.map(currentCourses, (courseId,fn)=>
+  //     courseId = Mongo.ObjectID(courseId);
+  //     course.findOne({_id:courseId}, (err, course)=>{
+  //       fn(course);
+  //     });
+  //     fn(allCurrent);
+  //   });
+  // }
+
   static findAllByUserId(userId, fn) {
-    userId = userId.toString();
+    // userId = userId.toString();
     courses.find({teacherId:userId}).toArray((err, allCourses)=>{
       fn(allCourses);
     });

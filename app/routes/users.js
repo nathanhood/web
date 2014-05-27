@@ -70,14 +70,21 @@ exports.profile = (req, res)=>{
 
 exports.learn = (req, res)=>{
   User.findByUserId(req.session.userId, user=>{
+    // var currentCourses = user.currentCourses;
     Course.findAllCourses({}, courses=>{
-      res.render('users/student', {user:user, courses:courses, title:'WEB: Student'});
+      // Course.findCurrentCoursesByUser(currentCourses, currentCourses=>{
+        res.render('users/student', {user:user, courses:courses, title:'WEB: Student'});
+      // });
     });
   });
 };
 
 exports.teach = (req, res)=>{
+  var userId = req.session.userId;
   User.findByUserId(req.session.userId, user=>{
-      res.render('users/teacher', {user:user, title:'WEB: Teacher'});
+    Course.findAllByUserId(userId, courses=>{
+      console.log(courses);
+      res.render('users/teacher', {user:user, courses:courses, title:'WEB: Teacher'});
+    });
   });
 };

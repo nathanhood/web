@@ -37,7 +37,6 @@ function ajax(url, verb) {
     form = $('form').serializeArray();
     while (form.length > 0) {
       formatQuestionAnswers(form);
-      debugger;
     }
     indexQuestions();
     var contentId = $('#contentId').data('contentid');
