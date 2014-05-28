@@ -88,7 +88,7 @@ function ajax(url, verb, data={}, success=r=>console.log(r), dataType='html'){//
     var html = editor.getHTML();
     var title = $('h1').text();
     var courseId = $('h1').data('courseid');
-    ajax(`/teacher/${courseId}/content/create`, 'POST', {title: title, bodyText:html, resources:resources, videos:videos}, html=>{
+    ajax(`/teach/${courseId}/content/create`, 'POST', {title: title, bodyText:html, resources:resources, videos:videos}, html=>{
       window.location = '/courses/edit';
     });
     event.preventDefault();

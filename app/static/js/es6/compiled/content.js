@@ -80,7 +80,7 @@ function ajax(url, verb) {
     var html = editor.getHTML();
     var title = $('h1').text();
     var courseId = $('h1').data('courseid');
-    ajax(("/teacher/" + courseId + "/content/create"), 'POST', {
+    ajax(("/teach/" + courseId + "/content/create"), 'POST', {
       title: title,
       bodyText: html,
       resources: resources,
