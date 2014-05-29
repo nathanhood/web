@@ -16,8 +16,15 @@ exports.create = (req, res)=>{
       course.contentTitles.push(content.title);
       course.contentIds.push(content._id);
       course.save(()=>{
-        res.render('courses/edit', {course:course});
+        res.send({course:course});
       });
     });
+  });
+};
+
+exports.index = (req, res)=>{
+  var title = req.params.contentTitle.replace('%', ' ');
+  Content.findByCourseIdAndTitle(req.params.courseId, title, content=>{
+    res.render('contents/index', {content:content, title:`WEB: ${content.title}`});
   });
 };

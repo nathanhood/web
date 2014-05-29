@@ -27,7 +27,8 @@
     "cookie-session":  "*",
     "cookies":         "*",
     "async":           "*",
-    "multiparty":      "*"
+    "multiparty":      "*",
+    "suspend":         "*"
   },
   "devDependencies": {
     "grunt":                "*",

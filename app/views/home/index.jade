@@ -11,7 +11,7 @@ block content
                   span.icon-bar
               a.navbar-brand(href='/') WEB: Where Education Begins
           .navbar-collapse.collapse
-              form.navbar-form.navbar-right(action='/users/login', method='POST')
+              form.navbar-form.navbar-right(action='/login', method='POST')
                   .form-group
                       input.form-control(type='email', name='email' placeholder='Email')
                   .form-group
@@ -19,8 +19,12 @@ block content
                   button.signin.btn.btn-success.login Sign In
                   button.register.btn.btn-warning.btn.btn-primary.btn(type='submit', data-toggle='modal', data-target='#myModal') Register
 
-  h1.welcome Welcome to WEB: Where Education Begins
-  h3.subwelcome Sign In or Register to Begin
+  .welcome-box
+    h1.welcome Welcome to <span class='welcome--page-title'>WEB</span>
+    h3.subwelcome <span>Sign In</span> or </span>Register</span> to Begin
+
+  .web-pic-box
+    img(src='/img/web.svg')
 
   .modal.fade#myModal(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
     .modal-dialog
@@ -30,7 +34,7 @@ block content
           h4.modal-title#myModalLable Registration Form
         .modal-body
           #registration
-            form(action='/users/register', method='POST', enctype='multipart/form-data')
+            form(action='/register', method='POST', enctype='multipart/form-data')
               input.form-control.username(type='text', name='userName', placeholder='Username', required='required')
               input.form-control.email(type='email', name='email', placeholder='Email', required='required')
               input.form-control.password(type='password', name='password', placeholder='Password', required='required')

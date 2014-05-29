@@ -3,15 +3,24 @@ extends ../shared/template
 block content
 
   .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-      .container
-          .nav-bar-header
-              button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                  span.sr-only Toggle navigation
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              .navbar-brand WEB: Course
-              .float
-              //.name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-                button.logout.btn.btn-danger.login Log Out
-          .navbar-collapse.collapse
+    .container
+      .nav-bar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/confirmation') WEB: Where Education Begins
+        .float
+          a.logout.btn.btn-danger(href='/logout') Log Out
+        .navbar-collapse.collapse
+
+  .course-shell
+    h1= course.title
+    img(src='/img/#{course.image}')
+    .course-inner
+      each title in course.contentTitles
+        .stage.stage-index-page
+          h3= title
+            a(href='/users/#{course.userName}/#{course._id}/#{title}')
+          a.btn.btn-info(href='/users/#{course.userName}/#{course._id}/#{title}/quiz') Quiz

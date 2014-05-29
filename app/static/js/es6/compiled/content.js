@@ -20,6 +20,23 @@ function ajax(url, verb) {
     $('#create-content').click(createContent);
     $('#add-link').click(addLinkResource);
     $('#add-video').click(addVideoResource);
+    getVideos();
+    getRefs();
+  }
+  function getRefs() {
+    var refs = $('.ref').map((function(index, r) {
+      var newRef = $(r).attr('data-txt').replace(/[+]/g, ' ');
+      $(r).text(newRef);
+    })).toArray();
+    console.log(refs);
+  }
+  function getVideos() {
+    var videos = $('.videos').find('.video').map((function(index, video) {
+      return $(video).data('path');
+    })).toArray();
+    for (var i = 0; i < videos.length; i++) {
+      $('.videos').append('<iframe width=560, height=315, src="//www.youtube.com/embed/' + videos[$traceurRuntime.toProperty(i)] + '", frameborder=0, allowfullscreen></iframe>');
+    }
   }
   function addLinkResource() {
     var resource = $('.link-resource:first').clone();
@@ -51,16 +68,19 @@ function ajax(url, verb) {
     var finalUrls = _.compact(urls);
     var resources = [];
     for (var j = 0; j < finalTitles.length; j++) {
+      console.log(finalTitles[$traceurRuntime.toProperty(j)]);
       var assignment = _.assign(finalTitles[$traceurRuntime.toProperty(j)], finalUrls[$traceurRuntime.toProperty(j)]);
       resources.push(assignment);
     }
     var videos = $('.video-resource-shell').find('.text').map((function(index, video) {
-      return $(video).val();
+      var split = $(video).val().split('=');
+      return split[1];
     })).toArray();
+    console.log(videos);
     var html = editor.getHTML();
     var title = $('h1').text();
     var courseId = $('h1').data('courseid');
-    ajax(("/teacher/" + courseId + "/content/create"), 'POST', {
+    ajax(("/teach/" + courseId + "/content/create"), 'POST', {
       title: title,
       bodyText: html,
       resources: resources,

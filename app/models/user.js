@@ -6,10 +6,10 @@ var _ = require('lodash');
 var bcrypt = require('bcrypt');
 
 class User{
-  constructor(fields, files){
+  constructor(fields, files, userName){
     this.email = fields.email[0];
     this.password = fields.password[0];
-    this.userName = fields.userName[0];
+    this.userName = userName;
     this.firstName = fields.firstName[0];
     this.lastName = fields.lastName[0];
     this.age = fields.age[0];
@@ -20,7 +20,7 @@ class User{
     this.courses = [];
     this.currentCourses = [];
     this.completeCourses = [];
-    this.picture = files.image[0].originalFilename;
+    this.image = files.image[0].originalFilename;
   }
 
   register(fn){
@@ -45,6 +45,19 @@ class User{
     }else{
       fn(null);
     }
+  }
+
+  save(fn){
+    users.save(this, ( )=>{
+      fn();
+    });
+  }
+
+  static findByUserName(userName, fn) {
+    users.findOne({userName:userName}, (err, user)=>{
+      user = _.create(User.prototype, user);
+      fn(user);
+    });
   }
 
   static findByUserEmail(email, fn){

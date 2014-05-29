@@ -10,10 +10,10 @@ block content
                  span.icon-bar
                  span.icon-bar
                  span.icon-bar
-             .navbar-brand WEB: Teacher
+             a.navbar-brand(href='/confirmation') WEB: Where Education Begins
              .float
-               .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-               button.logout.btn.btn-danger.login Log Out
+               a.name.navbar-brand('/users/#{user._id}') Welcome, #{user.firstName} #{user.lastName}
+               a.logout.btn.btn-dangera(href='/logout') Log Out
          .navbar-collapse.collapse
   .profile
 
@@ -27,7 +27,8 @@ block content
 
   #current-courses
     h2 Current Courses
-
-      //- .name <strong>Name: </strong> #{user.firstName} #{user.lastName}
-      //- .email <strong>Email: </strong> #{user.email}
-      //- .age <strong>Age: </strong> #{user.age}
+      each course in courses
+        .title= course.title
+          a(href='/courses/edit/#{course._id}')
+        .author By: #{user.userName}
+        img.image(src='/img/#{course.image}')

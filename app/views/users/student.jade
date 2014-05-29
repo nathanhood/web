@@ -13,10 +13,10 @@ block content
         //- .navbar-form.navbar-left.studentsearch(role='search')
         //-   input.search.form-group(type='text', class='form-control', placeholder='Search')
         //-   button.searchbutton.btn.btn-default Search
-        .navbar-brand WEB: Student
+        a.navbar-brand(href='/confirmation') WEB: Where Education Begins
         .float
-          .name.navbar-brand Welcome, #{user.firstName} #{user.lastName}
-          button.logout.btn.btn-danger.login Log Out
+          a.name.navbar-brand(href='/users/#{user._id}') Welcome, #{user.firstName} #{user.lastName}
+          a.logout.btn.btn-dangera(href='/logout') Log Out
       .navbar-collapse.collapse
 
   .profile
@@ -24,8 +24,22 @@ block content
   //-     .email <strong>Email: </strong> #{user.email}
   //-     .age <strong>Age: </strong> #{user.age}
 
-  #student-courses
-    h2 Current Courses
 
-  #progress
-    h2 Progress
+
+  .container-box
+
+    #student-courses
+      h2 Current Courses
+
+    #progress
+      h2 Progress
+
+    #courses
+      h2 All Courses
+      each course in courses
+        .courses-inner-box
+          .course-title= course.title
+            a(href='/users/#{user.userName}/#{course._id}')
+          .course-username By: #{course.userName}
+          a(href='/users/#{user.userName}/#{course._id}')
+            img.course-image(src='/img/#{course.image}')
