@@ -30,8 +30,9 @@ exports.index = (req, res)=>{
 };
 
 exports.edit = (req, res)=>{
-  Course.findByCourseId(req.session.courseId, (course)=>{
-    Content.findAllByCourseId(req.session.courseId, (contents)=>{
+  req.session.courseId = req.params.courseId;
+  Course.findByCourseId(req.params.courseId, (course)=>{
+    Content.findAllByCourseId(req.params.courseId, (contents)=>{
       res.render('courses/edit', {course:course, contents:contents, title:'WEB: Create Course'});
     });
   });
@@ -57,7 +58,7 @@ exports.create = (req, res)=>{
       User.findByUserId(req.session.userId, user=>{
         var course = new Course(req.session.userId, title, user.userName, summary, img);
         course.save(()=>{
-          req.session.courseId = course._id;
+          req.session.courseId = course._id.valueOf();
           user.courses.push(req.session.courseId);
           user.save(()=>{
             res.redirect('/courses/edit');

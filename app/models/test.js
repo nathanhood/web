@@ -10,7 +10,7 @@ class Test{
     this.courseId = courseId;
     this.contentId = contentId;
     this.contentTitle = contentTitle;
-    this.qAndA = qAndA;
+    this.qAndA = [qAndA];
   }
 
   save(fn){
@@ -43,6 +43,13 @@ class Test{
     // returnObj.total = total;
     // returnObj.grade = grade;
     fn(correct, total, grade);
+  }
+
+  static findByContentId(contentId, fn){
+    tests.findOne({contentId:contentId}, (err, test)=>{
+      test = _.create(Test.prototype, test);
+      fn(test);
+    });
   }
 
   static findByCourseIdAndContentId(courseId, contentId, fn){

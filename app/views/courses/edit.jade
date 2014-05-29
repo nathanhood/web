@@ -17,6 +17,8 @@ block content
           .navbar-collapse.collapse
   .t-center
     .a-wrapper
+      a.btn.btn-info(href='/teach') Finish
+
       .courseinfo
         h2= course.title
         img.courseimage(src='/img/#{course.teacherId}/#{course.title}/#{course.image}')
@@ -31,8 +33,8 @@ block content
       each content in contents
         .stage-info(data-contentId='#{content._id}')
           h2= content.title
-          button.btn.btn-info.edit-content(data-contentId='#{content._id}') Edit Content
-          button.btn.btn-info.edit-test(data-contentId='#{content._id}') Create/Edit Test
+          //- button.btn.btn-info.edit-content(data-contentId='#{content._id}') Edit Content
+          a.btn.btn-info.edit-test(href='/test/edit/#{content._id}', data-contentId='#{content._id}') Create/Edit Test
 
 block scripts
   script(src='/js/es6/compiled/course.js')

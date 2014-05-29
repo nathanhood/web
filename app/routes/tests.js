@@ -12,11 +12,45 @@ exports.edit = (req, res)=>{
 };
 
 exports.create = (req, res)=>{
-  var test = new Test(req.session.courseId, req.body.contentId, req.body.contentTitle, req.body.qAndA);
-  test.save(()=>{
-    res.render('courses/edit');
+  var q = {};
+  q.question = req.body.question;
+  q.answers = req.body.answers;
+  q.correct = req.body.correct;
+  var courseId = req.session.courseId;
+  var contentId = req.params.contentId;
+
+  Test.findByContentId(contentId, test=>{
+    if(q.question.length > 0 && q.answers > 0){
+      if(test){
+        test.qAndA.push(q);
+        test.save(()=>{
+          res.send({test:test});
+        });
+      }else{
+        Content.findByContentId(contentId, content=>{
+          var test = new Test(courseId, contentId, content.title, q);
+          test.save(()=>{
+            res.send({test:test});
+          });
+        });
+      }
+    }else{
+      res.send({test:test});
+    }
   });
 };
+
+exports.deleteQuestion = (req, res)=>{
+  var qI = req.body.questionIndex;
+  Test.findByContentId(req.params.contentId, test=>{
+    var newTest = test.qAndA.splice(qI,1);
+    console.log(newTest);
+    test.save(()=>{
+      res.send({test:test});
+    });
+  });
+};
+
 
 exports.index = (req, res)=>{
   var courseId = req.params.courseId;

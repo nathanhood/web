@@ -81,6 +81,7 @@ exports.learn = (req, res)=>{
 
 exports.teach = (req, res)=>{
   var userId = req.session.userId;
+  req.session.courseId = null;
   User.findByUserId(req.session.userId, user=>{
     Course.findAllByUserId(userId, courses=>{
       console.log(courses);

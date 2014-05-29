@@ -10,30 +10,38 @@ block content
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
-              a.navbar-brand(href='/confirmation') WEB: Create Test
+              a.navbar-brand(href='/confirmation') WEB: Create Quiz
               .float
                 a.logout.btn.btn-danger(href='/logout') Log Out
           .navbar-collapse.collapse
 
   .test
-    h1#contentId(data-contentid='#{content._id}') #{content.title} Test
+    h1#contentId(data-contentid='#{content._id}') #{content.title} Quiz
 
     button#create-test.btn.btn-success Finished
     button#add-question.btn.btn-warning Add Question
-    .questions
-      form
-        .question-shell
-          .question
-            input.form-control.question(type='text', name='question', placeholder='Write Question')
-          .answer-box
-            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-            input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
-        .
-        button.btn-info.add-possible Add Possible Answers
-        select.answer(name='answer')
+    .question-shell
+      .question
+          //- input.form-control.question(type='text', name='question', placeholder='Write Question')
+        //- .answer-box
+          //- input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+          //- input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+          //- input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+          //- input.form-control.possible-answer(type='text', name='possible', placeholder='Possible Answer')
+
+      h4 Possible Answers
+      button.btn.btn-info#add-answer Add Possible Answer
+      .answer-box
+
+          //- select.answer(name='answer')
+          //-   option Correct Answer
+      h4 Select Correct Answer
+      .correct-answer
+        select.answer
           option Correct Answer
+
+    .created-questions
+    
 
 block scripts
   script(src='/js/es6/compiled/test.js')

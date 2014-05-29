@@ -3,13 +3,6 @@
   $(document).ready(initialize);
   function initialize() {
     sortContent();
-    $('.stages').on('click', '.edit-test', goToCreateTest);
-  }
-  function goToCreateTest() {
-    var contentId = $(this).data('contentid');
-    ajax(("/teacher/" + contentId + "/test"), 'GET', null, (function() {
-      window.location = ("/teacher/" + contentId + "/test");
-    }));
   }
   function sortContent() {
     var contentIds = [];
