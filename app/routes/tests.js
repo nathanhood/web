@@ -20,9 +20,12 @@ exports.create = (req, res)=>{
   var contentId = req.params.contentId;
 
   Test.findByContentId(contentId, test=>{
-    if(q.question.length > 0 && q.answers > 0){
+    if(q.question.length > 0){
       if(test){
         test.qAndA.push(q);
+        console.log(test.qAndA);
+        console.log('---------------------');
+        console.log(q);
         test.save(()=>{
           res.send({test:test});
         });
